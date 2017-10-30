@@ -1,0 +1,59 @@
+div#connexion{margin-right:8px}
+/**/
+nav#barre{background: rgba(255, 255, 255, 0.2); box-shadow: rgba(0,0,0,0.1) 0 3px 6px 0}
+/*
+/**/
+label#connecte{color:rgba(255, 255, 255, 1); margin-right:6px}
+/**/
+img#barreseparation{margin-left:55px}
+/**/
+ul#listutilisateur{display:none; top:-20px}
+/**/
+h2#oups{border-bottom:1px; border-bottom-color:rgba(0,0,0,0.1); border-bottom-style: solid}
+/**/
+a#btnFermer{margin-top:22px}
+/**/
+p#texterreur{color:rgba(0, 0, 0, 1)}
+/**/
+/**/
+/*Modification de la classe pour le message modal full CSS*/
+.cModal {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  opacity:0;
+  pointer-events: none;
+}
+.cModal:target {
+  opacity:1;
+  pointer-events: auto;
+}
+.cModal > div {
+  max-width: 500px;
+  position: relative;
+  margin: 10% auto;
+  padding: 8px 30px 15px 30px;
+  border-radius: 2px;
+  background: #fff;
+}
+/**/
+/*modification de la classe pour le bouton rond*/
+.btn-xs {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+/*modification de la classe pour appliquer une rotation au logo*/
+.rotatelogo {
+    position: absolute;
+    -webkit-animation:spin 200ms linear;
+    -moz-animation:spin 200ms linear;
+    animation:spin 200ms linear;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
