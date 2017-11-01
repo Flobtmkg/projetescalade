@@ -2,7 +2,6 @@ package javabeans;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Utilisateur {
 private int id;
@@ -11,6 +10,14 @@ private String prenom;
 private String email;
 private String motDePasse;
 private String dateNaissance;
+private String description;
+//
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public int getId() {
 		return id;
 	}
@@ -58,14 +65,28 @@ private String dateNaissance;
 	//
 	public void setDateNaissance(String dateNaissance) {
 		//
-		String formatEN;
-		if(dateNaissance.contains("/")) {
-			String[] formatFr = dateNaissance.split("/");
-			formatEN = formatFr[2]+"-"+formatFr[1]+"-"+formatFr[0];
-		}else {
-			formatEN=dateNaissance;
+		try {
+			String formatEN;
+			if(dateNaissance.contains("/")) {
+				String[] formatFr = dateNaissance.split("/");
+				formatEN = formatFr[2]+"-"+formatFr[1]+"-"+formatFr[0];
+			}else {
+				//
+				SimpleDateFormat conversiondedate = new SimpleDateFormat("yyyy-MM-dd");
+			    @SuppressWarnings("unused")
+				java.util.Date utilDate = null;
+				try {//Si la conversion passe c'est que tout va bien et on garde, si c'est catché on met le default 
+					utilDate = conversiondedate.parse(dateNaissance);
+					formatEN=dateNaissance;
+				} catch (ParseException e) {
+					formatEN="0001-01-01";// default
+				}
+				//
+			}
+			this.dateNaissance = formatEN;
+		}catch(Exception e) {
+			this.dateNaissance = "0001-01-01";// default
 		}
-		this.dateNaissance = formatEN;
 	}
 	//
 	public String getPays() {

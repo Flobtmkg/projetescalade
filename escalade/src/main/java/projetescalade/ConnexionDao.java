@@ -27,7 +27,11 @@ public class ConnexionDao {
 	}
 	
 	 public Connection getConnection() throws SQLException {
-	        return DriverManager.getConnection(url, username, password);
+		 Connection connectionEnCours;
+		 connectionEnCours=DriverManager.getConnection(url, username, password);
+		 connectionEnCours.setAutoCommit(false);
+		 return connectionEnCours;
+	      
 	    }
 	 
 	 public UtilisateurDao getUtilisateurDao() {

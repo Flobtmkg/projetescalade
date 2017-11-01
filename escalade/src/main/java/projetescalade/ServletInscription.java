@@ -29,7 +29,7 @@ public class ServletInscription extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//
 		//cookie important pour tracer la dernière page atteinte par l'utilisateur
 		String adresse =request.getRequestURI();
 		response.addCookie(new Cookie("last",adresse));
@@ -38,11 +38,14 @@ public class ServletInscription extends HttpServlet {
 		CalculDate aujourdhui = new CalculDate();
 		request.setAttribute("maintenant", aujourdhui);
 		//
+		//
+		//
 		this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//
 		//set utilisateur à partir du formulaire
 		Utilisateur nouvelutilisateur=new Utilisateur();
 		nouvelutilisateur.setEmail(request.getParameter("email"));
@@ -52,10 +55,20 @@ public class ServletInscription extends HttpServlet {
 		nouvelutilisateur.setPays(request.getParameter("pays"));
 		nouvelutilisateur.setVille(request.getParameter("ville"));
 		nouvelutilisateur.setDateNaissance(request.getParameter("dateNaissance"));
+		nouvelutilisateur.setDescription("");
 		//
-		utilisateurEnCours.ajouter(nouvelutilisateur);
-		//ModalValidation
-		response.sendRedirect(request.getContextPath() + "/inscription#ModalValidation");
+		//
+		String erreur=utilisateurEnCours.ajouter(nouvelutilisateur);
+		if(erreur.equals("")==false) {
+			if(erreur.contains("23505")) {
+				response.sendRedirect(request.getContextPath() + "/inscription#ModalNonValidation");
+			}else {
+				response.sendRedirect(request.getContextPath() + "/inscription#Modalerreur");	
+			}
+		}else {
+			//ModalValidation
+			response.sendRedirect(request.getContextPath() + "/inscription#ModalValidation");
+		}
 	}
 
 }

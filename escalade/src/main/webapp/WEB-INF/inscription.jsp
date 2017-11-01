@@ -10,7 +10,6 @@
     <link type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/menu.css" rel="stylesheet">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/menuutilisateur.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/inscription.js"></script>
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/inscription.css" rel="stylesheet">
 <title>Inscription</title>
 </head>
@@ -24,6 +23,28 @@
 	    		<h2 id="validation">Vous faites désormais parti de nos membres!</h2>
 	    </header>
 	    	<p id="textvalidation"><br>Vous pouvez dès maintenant vous connecter à votre espace membre et découvrir toutes les fonctionnalités du site.</p>
+	    <footer>
+	    	<a href="#fermer" id="btnFermer" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> Fermer</a>
+	    </footer>
+	  </div>
+	</div>
+	<div id="ModalNonValidation" class="cModal">
+	  <div>
+	    <header>
+	    		<h2 id="validation">Oups!</h2>
+	    </header>
+	    		<p id="textvalidation"><br>Cette adresse email est déjà inscrite!</p>
+	    <footer>
+	    	<a href="#fermer" id="btnFermer" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> Fermer</a>
+	    </footer>
+	  </div>
+	</div>
+	<div id="Modalerreur" class="cModal">
+	  <div>
+	    <header>
+	    		<h2 id="validation">Oups!</h2>
+	    </header>
+	    		<p id="textvalidation"><br>Une erreur est survenue dans la communication avec la base de données. Réessayez plus tard.</p>
 	    <footer>
 	    	<a href="#fermer" id="btnFermer" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> Fermer</a>
 	    </footer>
@@ -43,59 +64,68 @@
 							</div>
 					</div>
 						<div class="row">
-							<div class="col-sm-6">
-								<label>E-mail:</label>
+							<div class="col-sm-6 hidden-xs">
+								<label>E-mail*:</label>
 							</div>
-							<div class="col-sm-6">
-								<label>Mot de passe:</label>
+							<div class="col-sm-6 hidden-xs">
+								<label>Mot de passe* (min 7 caractères):</label>
+							</div>
+							<div class="col-sm-6 hidden-sm hidden-md hidden-lg">
+								<label>E-mail* et mot de passe*:</label>
 							</div>
 						</div>
 						<div class="row form-inline">
 							<div class="col-sm-6">
 								<div class="input-group col-sm-12">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-									<input type="text" class="form-control" placeholder="e-mail*" name="email" required>
+									<input type="text" class="form-control" placeholder="e-mail*" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="input-group col-sm-12">
 									 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-									<input type="password" class="form-control" placeholder="mot de passe*" name="motDePasse" required>
+									<input type="password" class="form-control" placeholder="mot de passe*" name="motDePasse"  pattern="[a-zA-Z0-9._%+-]{7,20}" required>
 								</div>
 							</div>
 						</div>
 						<br>
 						<div class="row">
-							<div class="col-sm-6">
-								<label>Prénom:</label>
+							<div class="col-sm-6 hidden-xs">
+								<label>Prénom*:</label>
 							</div>
-							<div class="col-sm-6">
-								<label>Nom:</label>
+							<div class="col-sm-6 hidden-xs">
+								<label>Nom*:</label>
+							</div>
+							<div class="col-sm-6 hidden-sm hidden-md hidden-lg">
+								<label>Prénom* et nom*:</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
-								<input type="text" class="form-control" placeholder="prénom*" name="prenom" required>
+								<input type="text" class="form-control" placeholder="prénom*" name="prenom" pattern="[a-zA-Z-]{1,50}" required>
 							</div>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" placeholder="nom*" name="nom" required>
+								<input type="text" class="form-control" placeholder="nom*" name="nom" pattern="[a-zA-Z-]{1,50}" required>
 							</div>
 						</div>
 						<br>
 						<div class="row">
-							<div class="col-sm-6">
+							<div class="col-sm-6 hidden-xs">
 								<label>Pays:</label>
 							</div>
-							<div class="col-sm-6">
+							<div class="col-sm-6 hidden-xs">
 								<label>Ville:</label>
+							</div>
+							<div class="col-sm-6 hidden-sm hidden-md hidden-lg">
+								<label>Pays et ville:</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
-								<input type="text" class="form-control" placeholder="Pays" name="pays">
+								<input type="text" class="form-control" placeholder="Pays" name="pays" pattern="[a-zA-Z-]{1,50}">
 							</div>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" placeholder="ville" name="ville">
+								<input type="text" class="form-control" placeholder="ville" name="ville" pattern="[a-zA-Z-]{1,50}">
 							</div>
 						</div>
 						<br>
@@ -106,7 +136,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-4">
-								 <input type="text" id="valeur" onKeyUp="verif();" class="form-control" placeholder="${maintenant.theDay}/${maintenant.theMonth}/${maintenant.theYear}" name="dateNaissance"> 
+								<input type="text" id="valeur" class="form-control" placeholder="${maintenant.theDay}/${maintenant.theMonth}/${maintenant.theYear}" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])(/0[1-9]|/1[012])/[0-9]{4}" name="dateNaissance"> 
 							</div>
 						</div>
 						<br>

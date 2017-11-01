@@ -39,11 +39,10 @@ public class ServletConnexion extends HttpServlet {
 		HttpSession session= request.getSession();
 		session.setAttribute("utilisateurencours", nouvelutilisateur);
 		//
-		if(nouvelutilisateur.getId()==0) {
-			response.sendRedirect(request.getContextPath() + fromWho +"#Modal");
-		}else {
-			response.sendRedirect(request.getContextPath() + fromWho);
-		}
+			if(nouvelutilisateur.getId()==0) {
+				response.sendRedirect(request.getContextPath() + fromWho +"#Modal");
+			}else {
+				response.sendRedirect(request.getContextPath() + fromWho);
+			}
 	}
-
 }

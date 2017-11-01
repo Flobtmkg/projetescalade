@@ -1,4 +1,4 @@
-body{background-image:url(../img/fondescalade.jpg); background-repeat:no-repeat; background-attachment: fixed}
+body{background-image:url(../img/fondescalade2_c80.jpg); background-repeat:repeat-y; background-attachment: fixed;background-size: 100% auto; min-width: 510px}
 div#divdefond{position:fixed;height:100%;width:100%; top:0px; background-color:rgba(0, 0, 0, 0.6); z-index: -1}
 div#blockinscription{background-color:rgba(255, 255, 255, 0.1);border-color:rgba(0, 0, 0, 0.3);color:rgba(204, 204, 204, 1);margin-top:50px; box-shadow:rgba(0,0,0,0.2) 0 3px 6px 0}
 p#infoobligatoire{color:rgba(255, 255, 255, 0.5); font-size:14px;padding-top:8px}
@@ -6,8 +6,5 @@ h3{color:rgba(220, 220, 220, 1); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5)}
 legend{color:rgba(204, 204, 204, 1)}
 input#valider{box-shadow:rgba(0,0,0,0.2) 0 3px 6px 0}
 p{color:rgba(255, 255, 255, 1)}
-/*label{color:rgba(200, 200, 200, 1)}
-legend{color:rgba(180, 180, 180, 1)}
-height: 100% !important; overflow-y: scroll; overflow-x: hidden;*/
-h2#validation{border-bottom:1px; border-bottom-color:rgba(0,0,0,0.1); border-bottom-style: solid}
+h2#validation{text-shadow:0px 2px 4px rgba(0, 0, 0, 0.2); color:rgba(0, 0, 0, 1); border-bottom:1px; border-bottom-color:rgba(0,0,0,0.1); border-bottom-style: solid}
 p#textvalidation{color:rgba(0, 0, 0, 1)}
