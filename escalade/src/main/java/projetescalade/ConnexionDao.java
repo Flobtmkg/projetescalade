@@ -31,10 +31,40 @@ public class ConnexionDao {
 		 connectionEnCours=DriverManager.getConnection(url, username, password);
 		 connectionEnCours.setAutoCommit(false);
 		 return connectionEnCours;
-	      
 	    }
 	 
 	 public UtilisateurDao getUtilisateurDao() {
 	        return new BddUtilisateurDao(this);
+	    }
+	 
+	 public TopoDao getTopoDao() {
+	        return new BddTopoDao(this);
+	    }
+	 
+	 public ReservationDao getReservationDao() {
+	        return new BddReservationDao(this);
+	    }
+	 
+	 public CommentaireDao getCommentaireDao() {
+	        return new BddCommentairesDao(this);
+	    }
+	 
+	 public SiteDao getSiteDao() {
+	        return new BddSitesDao(this);
+	    }
+	 
+	 public NotificationDao getNotificationDao() {
+	        return new BddNotificationsDao(this);
+	    }
+	 
+	 public TopoSitesDao getTopoSitesDao() {
+	        return new BddTopoSitesDao(this);
+	    }
+	 
+	 public PhotoTopoDao getPhotoTopoDao() {
+	        return new BddPhotoTopoDao(this);
+	    }
+	 public PhotoUtilisateurDao getPhotoUtilisateurDao() {
+	        return new BddPhotoUtilisateurDao(this);
 	    }
 }

@@ -16,7 +16,7 @@
 						<c:when test="${sessionScope.utilisateurencours.id!=0 && !empty sessionScope.utilisateurencours.id}">
 							<div id="blockconnexion" class="form-group navbar-btn">
 								<label id="connecte">Bonjour ${sessionScope.utilisateurencours.prenom} </label>
-								<a href="./espaceutilisateur"><button id="boutonhome" onmouseover="affichmenu();" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-user"></span></button></a>
+								<a href="./espaceutilisateur"><button id="boutonhome" onmouseover="affichmenu();" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-user"></span><c:if test="${sessionScope.nouvellesNotifications>0}"><span class="badge">${sessionScope.nouvellesNotifications}</span></c:if></button></a>
 							</div>
 						</c:when>
 						<c:when test="${sessionScope.utilisateurencours.id==0||empty sessionScope.utilisateurencours.id}">
@@ -30,7 +30,7 @@
 		</div>
 	</nav>
 	<ul id="listutilisateur" class="list-group col-lg-2 navbar-right sousmenuutilisateur">
-		<li class="list-group-item" onmouseout="cachemenu();" onmouseover="affichmenu();"><a href="./espaceutilisateur"><span class="glyphicon glyphicon-user"></span> Espace utilisateur</a></li>
+		<li class="list-group-item" onmouseout="cachemenu();" onmouseover="affichmenu();"><a href="./espaceutilisateur"><span class="glyphicon glyphicon-user"></span> Espace utilisateur </a><c:if test="${sessionScope.nouvellesNotifications>0}"><span class="badge">${sessionScope.nouvellesNotifications}</span></c:if></li>
 		<li class="list-group-item" onmouseout="cachemenu();" onmouseover="affichmenu();"><a href="./deconnexion"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
 	</ul>
 	

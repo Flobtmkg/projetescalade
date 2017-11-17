@@ -15,11 +15,11 @@ import javabeans.Utilisateur;
 
 public class ServletInscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UtilisateurDao utilisateurEnCours;
+	private UtilisateurDao accesBddUtilisateur;
 
 	public void init() throws ServletException {
         ConnexionDao maconnexion = ConnexionDao.getInstance();
-        this.utilisateurEnCours = maconnexion.getUtilisateurDao();
+        this.accesBddUtilisateur = maconnexion.getUtilisateurDao();
     }
 	
     public ServletInscription() {
@@ -46,8 +46,10 @@ public class ServletInscription extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//
+		request.setCharacterEncoding("UTF-8");
+		//
 		//set utilisateur à partir du formulaire
-		Utilisateur nouvelutilisateur=new Utilisateur();
+		Utilisateur nouvelutilisateur=new Utilisateur(0,"","","","","","","","");
 		nouvelutilisateur.setEmail(request.getParameter("email"));
 		nouvelutilisateur.setMotDePasse(request.getParameter("motDePasse"));
 		nouvelutilisateur.setNom(request.getParameter("nom"));
@@ -58,7 +60,7 @@ public class ServletInscription extends HttpServlet {
 		nouvelutilisateur.setDescription("");
 		//
 		//
-		String erreur=utilisateurEnCours.ajouter(nouvelutilisateur);
+		String erreur=accesBddUtilisateur.ajouter(nouvelutilisateur);
 		if(erreur.equals("")==false) {
 			if(erreur.contains("23505")) {
 				response.sendRedirect(request.getContextPath() + "/inscription#ModalNonValidation");

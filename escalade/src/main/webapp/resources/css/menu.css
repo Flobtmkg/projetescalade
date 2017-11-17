@@ -18,6 +18,7 @@ p#texterreur{color:rgba(0, 0, 0, 1)}
 /**/
 /*Modification de la classe pour le message modal full CSS*/
 .cModal {
+  overflow-y: initial;
   position: fixed;
   z-index: 99999;
   top: 0;
@@ -39,6 +40,10 @@ p#texterreur{color:rgba(0, 0, 0, 1)}
   padding: 8px 30px 15px 30px;
   border-radius: 2px;
   background: #fff;
+}
+.cModal > div > div {
+  max-height: 300px;
+  overflow-y: auto;
 }
 /**/
 /*modification de la classe pour le bouton rond*/

@@ -44,7 +44,7 @@
 	    <header>
 	    		<h2 id="validation">Oups!</h2>
 	    </header>
-	    		<p id="textvalidation"><br>Une erreur est survenue dans la communication avec la base de données. Réessayez plus tard.</p>
+	    		<p id="textvalidation"><br>Une erreur est survenue. Réessayez plus tard.</p>
 	    <footer>
 	    	<a href="#fermer" id="btnFermer" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> Fermer</a>
 	    </footer>
@@ -102,10 +102,10 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
-								<input type="text" class="form-control" placeholder="prénom*" name="prenom" pattern="[a-zA-Z-]{1,50}" required>
+								<input type="text" class="form-control" placeholder="prénom*" name="prenom" pattern="{1,50}" required>
 							</div>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" placeholder="nom*" name="nom" pattern="[a-zA-Z-]{1,50}" required>
+								<input type="text" class="form-control" placeholder="nom*" name="nom" pattern="{1,50}" required>
 							</div>
 						</div>
 						<br>
@@ -122,10 +122,10 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
-								<input type="text" class="form-control" placeholder="Pays" name="pays" pattern="[a-zA-Z-]{1,50}">
+								<input type="text" class="form-control" placeholder="Pays" name="pays" pattern="{1,50}">
 							</div>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" placeholder="ville" name="ville" pattern="[a-zA-Z-]{1,50}">
+								<input type="text" class="form-control" placeholder="ville" name="ville" pattern="{1,50}">
 							</div>
 						</div>
 						<br>

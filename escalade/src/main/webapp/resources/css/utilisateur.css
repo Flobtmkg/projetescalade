@@ -1,10 +1,9 @@
 body{background-image:url(../img/fondescalade2_c80.jpg); background-repeat:repeat-y; background-attachment: fixed;background-size: 100% auto; min-width: 510px}
 div#divdefond{position:fixed;height:100%;width:100%; top:0px; background-color:rgba(0, 0, 0, 0.7); z-index: -1}
-#cadrephoto{height:200px;width:200px; float:left;}
+div#cadrephoto{height:200px;width:200px; float:left}
 div#blockTransparent{height:200px;width:20px; float:left}
 textarea#textDescription{resize: none;font-style: italic}
 textarea#textDescription0{resize: none;font-style: italic;color:rgba(220,220,220,1);background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0)}
-textarea#textDescription2{resize: none;font-style: italic;color:rgba(0,0,0,1);}
 textarea#textDescription1{resize: none;font-style: italic;color:rgba(220,220,220,1);background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0);width:33.33%!important;padding:0}
 form#blockdescription{margin-top:20px;padding:0px;background-color:rgba(255,255,255,0.1)}
 div#paneldescription{margin-bottom:10px}
@@ -15,27 +14,15 @@ div#paneldescription{margin-bottom:10px}
 p#textvalidation{color:rgba(0, 0, 0, 1)}
 input#btnvalider{margin-top:22px; width:79px}
 a#reglage{float:left}
-div#lien{margin-top:20px}
 label#labelparametre{background-color:rgba(0,0,0,0.4);padding:5px;margin-top:0px}
-label#labelparametre2{background-color:rgba(0,0,0,0.8);padding:5px;margin-top:0px;margin-bottom:2px;margin-left:-1px}
-label#labelPlusBas{margin-top:15px}
 label{margin-top:8px;}
-div#blockCheck{margin-top:0px;margin-bottom:0px}
 div#table-scroll{max-height: 200px;overflow-y: auto;margin-top:5px}
-div#table-scroll2{max-height: 130px;overflow-y: auto;margin-top:0px}
 div#buttonsupp{margin-top:30px;padding-left:0}
-div#buttonsupp2{margin-top:20px;padding-left:0}
 div#ligne{border-bottom:1px;border-color:rgba(180, 180, 180, 0.05);border-bottom-style: solid;padding-top:10px}
 div#ligneheader{border-bottom:2px;border-color:rgba(255, 255, 255, 0.6);border-bottom-style: solid}
 div#contenuheader{padding-left:15px;padding-right:15px}
-#buttonFile{top:0px; margin:0px;float:left}
-#nonfloat{float:none}
 .label1{
 	color:rgba(180, 180, 180, 1);
 	text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);
 	border-color:rgba(180, 180, 180, 0.3);
-}
-.photo:hover {
-	background-image:url(../img/imagemodif2.png)!important;
-
 }

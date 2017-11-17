@@ -1,6 +1,10 @@
 
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>Archetype Created Web Application</display-name>
+  <context-param>
+    <param-name>filePath</param-name>
+    <param-value>C:/projetescalade/img/</param-value>
+  </context-param>
   <servlet>
   	<display-name>Servlet1</display-name>
   	<servlet-name>Servlet1</servlet-name>
@@ -33,6 +37,12 @@
   	<display-name>ServletEspaceUtilisateur</display-name>
   	<servlet-name>ServletEspaceUtilisateur</servlet-name>
   	<servlet-class>projetescalade.ServletEspaceUtilisateur</servlet-class>
+  	<multipart-config>
+	    <location></location>
+	    <max-file-size>10485760</max-file-size>
+	    <max-request-size>52428800</max-request-size>
+	    <file-size-threshold>1048576</file-size-threshold>
+	</multipart-config>
   </servlet>
   <servlet>
   	<description>
@@ -55,6 +65,54 @@
   	<servlet-name>ServletConnexion</servlet-name>
   	<servlet-class>projetescalade.ServletConnexion</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ServletUtilisateurPublic</display-name>
+  	<servlet-name>ServletUtilisateurPublic</servlet-name>
+  	<servlet-class>projetescalade.ServletUtilisateurPublic</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ServletRechercheTopo</display-name>
+  	<servlet-name>ServletRechercheTopo</servlet-name>
+  	<servlet-class>projetescalade.ServletRechercheTopo</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ServletReservations</display-name>
+  	<servlet-name>ServletReservations</servlet-name>
+  	<servlet-class>projetescalade.ServletReservations</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ServletAjoutTopo</display-name>
+  	<servlet-name>ServletAjoutTopo</servlet-name>
+  	<servlet-class>projetescalade.ServletAjoutTopo</servlet-class>
+  	<multipart-config>
+	    <location></location>
+	    <max-file-size>10485760</max-file-size>
+	    <max-request-size>52428800</max-request-size>
+	    <file-size-threshold>1048576</file-size-threshold>
+	</multipart-config>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ServletSite</display-name>
+  	<servlet-name>ServletSite</servlet-name>
+  	<servlet-class>projetescalade.ServletSite</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ServletAjoutImageUtilisateur</display-name>
+  	<servlet-name>ServletAjoutImageUtilisateur</servlet-name>
+  	<servlet-class>projetescalade.ServletAjoutImageUtilisateur</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Servlet1</servlet-name>
   	<url-pattern>/accueil</url-pattern>
@@ -65,7 +123,7 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ServletTopo</servlet-name>
-  	<url-pattern>/topos</url-pattern>
+  	<url-pattern>/topo</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ServletRecherche</servlet-name>
@@ -86,6 +144,30 @@
   <servlet-mapping>
   	<servlet-name>ServletConnexion</servlet-name>
   	<url-pattern>/connexion</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletUtilisateurPublic</servlet-name>
+  	<url-pattern>/utilisateur</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletRechercheTopo</servlet-name>
+  	<url-pattern>/topos</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletReservations</servlet-name>
+  	<url-pattern>/reservations</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletAjoutTopo</servlet-name>
+  	<url-pattern>/ajouttopo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletSite</servlet-name>
+  	<url-pattern>/site</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletAjoutImageUtilisateur</servlet-name>
+  	<url-pattern>/ajoutimageutilisateur</url-pattern>
   </servlet-mapping>
   <jsp-config>
   	<jsp-property-group>

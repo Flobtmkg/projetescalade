@@ -30,7 +30,7 @@ public static String getCookiePagePrecedente(HttpServletRequest requestInput) {
             }
         }
     }
-	if(valeurCookie.equals("")) {
+	if(valeurCookie.equals("")||valeurCookie.equals("/escalade/utilisateur")||valeurCookie.equals("/escalade/topo")) {
 		valeurCookie="/accueil";
 	} else {
 		valeurCookie=valeurCookie.substring(valeurCookie.lastIndexOf('/'), valeurCookie.length());

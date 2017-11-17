@@ -1,5 +1,5 @@
 body{background-image:url(../img/fondescalade2_c80.jpg); background-repeat:repeat-y; background-attachment: fixed;background-size: 100% auto; min-width: 510px}
-div#divdefond{position:fixed;height:100%;width:100%; top:0px; background-color:rgba(0, 0, 0, 0.6); z-index: -1}
+div#divdefond{position:fixed;height:100%;width:100%; top:0px; background-color:rgba(0, 0, 0, 0.7); z-index: -1}
 div#blockinscription{background-color:rgba(255, 255, 255, 0.1);border-color:rgba(0, 0, 0, 0.3);color:rgba(204, 204, 204, 1);margin-top:50px; box-shadow:rgba(0,0,0,0.2) 0 3px 6px 0}
 p#infoobligatoire{color:rgba(255, 255, 255, 0.5); font-size:14px;padding-top:8px}
 h3{color:rgba(220, 220, 220, 1); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5)}

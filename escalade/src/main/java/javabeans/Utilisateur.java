@@ -1,7 +1,6 @@
 package javabeans;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 public class Utilisateur {
 private int id;
@@ -11,7 +10,21 @@ private String email;
 private String motDePasse;
 private String dateNaissance;
 private String description;
+private String pays;
+private String ville;
 //
+
+public Utilisateur(int id, String nom, String prenom, String email, String motDePasse, String dateNaissance, String description, String pays, String ville) {
+	this.id=id;
+	this.nom=nom;
+	this.prenom=prenom;
+	this.email=email;
+	this.motDePasse=motDePasse;
+	this.dateNaissance=dateNaissance;
+	this.description=description;
+	this.pays=pays;
+	this.ville=ville;
+}
 	public String getDescription() {
 		return description;
 	}
@@ -24,8 +37,7 @@ private String description;
 	public void setId(int id) {
 		this.id = id;
 	}
-	private String pays;
-	private String ville;
+	
 	//
 	public String getNom() {
 		return nom;
@@ -72,13 +84,12 @@ private String description;
 				formatEN = formatFr[2]+"-"+formatFr[1]+"-"+formatFr[0];
 			}else {
 				//
-				SimpleDateFormat conversiondedate = new SimpleDateFormat("yyyy-MM-dd");
 			    @SuppressWarnings("unused")
-				java.util.Date utilDate = null;
-				try {//Si la conversion passe c'est que tout va bien et on garde, si c'est catché on met le default 
-					utilDate = conversiondedate.parse(dateNaissance);
+				LocalDate inputDate = null;
+				try {//Si la conversion passe c'est que tout va bien et on garde, si c'est catché on met le default
+					inputDate=LocalDate.parse(dateNaissance);
 					formatEN=dateNaissance;
-				} catch (ParseException e) {
+				} catch (Exception e) {
 					formatEN="0001-01-01";// default
 				}
 				//
