@@ -6,6 +6,8 @@ public class Commentaire implements Comparable<Commentaire>{
 private int idCommentaire;
 private int idUtilisateur;
 private int idSite;
+private int idSecteur;
+private int idVoie;
 private String contenuCommentaire;
 private String ipCommentaire;
 private String dateCommentaire;
@@ -60,6 +62,24 @@ public void setSiteCommentaire(Site siteCommentaire) {
 public String getDateCommentaireFR() {
 	return dateCommentaireFR;
 }
+public Utilisateur getCommentateur() {
+	return commentateur;
+}
+public void setCommentateur(Utilisateur commentateur) {
+	this.commentateur = commentateur;
+}
+public int getIdSecteur() {
+	return idSecteur;
+}
+public void setIdSecteur(int idSecteur) {
+	this.idSecteur = idSecteur;
+}
+public int getIdVoie() {
+	return idVoie;
+}
+public void setIdVoie(int idVoie) {
+	this.idVoie = idVoie;
+}
 ////
 public int compareTo(Commentaire autreCommentaire) {
 	//
@@ -71,11 +91,4 @@ public int compareTo(Commentaire autreCommentaire) {
 		return 0;
 	}
 }
-public Utilisateur getCommentateur() {
-	return commentateur;
-}
-public void setCommentateur(Utilisateur commentateur) {
-	this.commentateur = commentateur;
-}
-
 }

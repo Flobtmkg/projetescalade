@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 
 import javabeans.Reservation;
+import javabeans.Topo;
 
 public class DisponibiliteTopo {
 	private ReservationDao accesBddReservation;
@@ -65,7 +66,6 @@ public class DisponibiliteTopo {
 		 }
 	}
 	 
-	 //
 	 //
 	 public ArrayList<Reservation> periodesNonDisponibles(int idTopoInput, String dateDebutInput, String dateFinInput) {//Sort la liste des periodes futures non disponibles		 
 		 //check de format

@@ -13,23 +13,26 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import javabeans.Commentaire;
+import javabeans.PhotoSite;
 import javabeans.PhotoTopo;
 import javabeans.Reservation;
+import javabeans.Secteur;
 import javabeans.Site;
 import javabeans.Topo;
 import javabeans.Utilisateur;
+import javabeans.Voie;
 
 
 public class ServletSite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UtilisateurDao accesBddUtilisateur;
 	private TopoDao accesBddTopo;
-	private ReservationDao accesBddReservation;
 	private SiteDao accesBddSite;
 	private TopoSitesDao accesBddTopoSite;
-	private NotificationDao accesBddNotification;
-	private PhotoTopoDao accesBddPhotoTopo;
 	private CommentaireDao accesBddCommentaire;
+	private SecteurDao accesBddSecteur;
+	private VoieDao accesBddVoie;
+	private PhotoSiteDao accesBddPhotoSite;
 	//
 	private ConnexionDao maconnexion;
 	//
@@ -41,12 +44,12 @@ public class ServletSite extends HttpServlet {
         maconnexion = ConnexionDao.getInstance();
         this.accesBddUtilisateur = maconnexion.getUtilisateurDao();
         this.accesBddTopo=maconnexion.getTopoDao();
-        this.accesBddReservation=maconnexion.getReservationDao();
         this.accesBddSite=maconnexion.getSiteDao();
         this.accesBddTopoSite=maconnexion.getTopoSitesDao();
-        this.accesBddNotification=maconnexion.getNotificationDao();
-        this.accesBddPhotoTopo=maconnexion.getPhotoTopoDao();
         this.accesBddCommentaire=maconnexion.getCommentaireDao();
+        this.accesBddSecteur=maconnexion.getSecteurDao();
+        this.accesBddVoie=maconnexion.getVoieDao();
+        this.accesBddPhotoSite=maconnexion.getPhotoSiteDao();
     }
 
     public ServletSite() {
@@ -76,6 +79,14 @@ public class ServletSite extends HttpServlet {
 				String adresse =request.getRequestURI()+"?site="+id;
 				response.addCookie(new Cookie("last",adresse));
 				//
+				//Récupération adress img
+				PhotoSite relationPhotoSite= accesBddPhotoSite.getPhotoPath(id);
+				//String hostURL="http://"+request.getServerName() + ":" + request.getServerPort()+"/escalade/img/";
+				String imgPath=null;
+				if(relationPhotoSite.getPathPhoto()!=null) {
+					imgPath="/escalade/img/"+relationPhotoSite.getPathPhoto();
+				}
+				//
 				//Récupération des topo concernés par les sites et leur propriétaire
 				ArrayList<Integer> idDesTopos=accesBddTopoSite.trouverTopoConcerneParSite(id);
 				ArrayList<Topo> topoConcernes=accesBddTopo.trouverTopo(idDesTopos);
@@ -103,9 +114,32 @@ public class ServletSite extends HttpServlet {
 					}
 				}
 				//
+				//Récupération des Secteurs et des voies
+				ArrayList<Voie> voies = null;
+				ArrayList<Secteur> secteurs=accesBddSecteur.trouver(id);
+				for(Secteur sect:secteurs) {
+					if(voies==null) {
+						voies=accesBddVoie.trouver(sect.getIdSecteur());
+					}else {
+						voies.addAll(accesBddVoie.trouver(sect.getIdSecteur()));
+					}
+				}
+				String[] minMax=Quotations.getMinMax(voies);
+				int nbVoies=0;
+				if(voies!=null) {
+					nbVoies=voies.size();
+				}else {
+					nbVoies=0;
+				}
+				
+				//
+				request.setAttribute("nbVoies", nbVoies);
+				request.setAttribute("minMax", minMax);
 				commentaireDuSite.sort(null);
-				//request.setAttribute("imgPath", imgPath);
+				request.setAttribute("imgPath", imgPath);
 				request.setAttribute("maintenant", aujourdhui);
+				request.setAttribute("secteurs", secteurs);
+				request.setAttribute("voies", voies);
 				request.setAttribute("toposconcernes", topoConcernes);
 				request.setAttribute("commentaireDuSite", commentaireDuSite);;
 				request.setAttribute("sitefound", siteAAfficher);
@@ -149,7 +183,7 @@ public class ServletSite extends HttpServlet {
 			}else {
 				newCommentaire.setIdUtilisateur(0);//anonyme
 			}
-			accesBddCommentaire.ajouterCommentaire(newCommentaire);
+			accesBddCommentaire.ajouterCommentaire(newCommentaire,0,0);
 			//
 		}
 		//

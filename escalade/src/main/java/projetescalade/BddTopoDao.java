@@ -7,9 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
+import javabeans.Reservation;
 import javabeans.Site;
 import javabeans.Topo;
+import javabeans.Utilisateur;
+import javabeans.Voie;
 
 public class BddTopoDao implements TopoDao {
 	//
@@ -198,4 +202,82 @@ public class BddTopoDao implements TopoDao {
 	}
 	//
 	//
+	public ArrayList<Topo> trouverParCritere(String nomSiteInput, String keyWordInput, String disponibilite) {
+		//
+		//On récupère tout sous forme de topos en effectuant la recherche et des mots clés et des sites
+		Connection connexion = null;
+        Statement statement = null;
+        ResultSet resultat=null;
+        ArrayList<Topo> topos = new ArrayList<Topo>();
+        String requete;
+        try {
+        	 connexion = connexionEnCours.getConnection();
+	         statement=connexion.createStatement();
+	         if(keyWordInput.equals("")==false && nomSiteInput.equals("")==false) {
+	        	 requete="SELECT DISTINCT topo.idtopo,topo.nomtopo,topo.descriptiontopo,phototopo.pathphoto,topo.idproprietaire,utilisateur.prenomutilisateur,utilisateur.nomutilisateur,site.idsite,site.nomsite FROM topo FULL JOIN toposites ON topo.idtopo = toposites.idtopo FULL JOIN site ON toposites.idsite=site.idsite FULL JOIN utilisateur ON topo.idproprietaire=utilisateur.idutilisateur FULL JOIN phototopo ON topo.idtopo = phototopo.idtopo FULL JOIN reservation ON reservation.idtopo = topo.idtopo WHERE toposites.idtopo IN (SELECT idtopo FROM toposites FULL JOIN site ON toposites.idsite=site.idsite WHERE nomsite='"+nomSiteInput+"') AND nomsite='"+nomSiteInput+"' AND (UPPER(nomtopo) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(descriptiontopo) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(nomsite) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(payssite) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(villesite) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(descriptionsite) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(nomutilisateur) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(prenomutilisateur) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(descriptionutilisateur) LIKE UPPER('%"+keyWordInput+"%'))";
+	        	 if(disponibilite.equals("")==false) {
+	        		 requete=requete+" AND topo.idtopo NOT IN (SELECT topo.idtopo FROM topo FULL JOIN reservation ON topo.idtopo=reservation.idtopo WHERE DATE(NOW()) BETWEEN datedebut AND datefin)";
+	        	 }
+	        	 resultat=statement.executeQuery(requete);
+		     }else if(keyWordInput.equals("")==false && nomSiteInput.equals("")==true) {
+		    	 requete="SELECT DISTINCT topo.idtopo,topo.nomtopo,topo.descriptiontopo,phototopo.pathphoto,topo.idproprietaire,utilisateur.prenomutilisateur,utilisateur.nomutilisateur,site.idsite,site.nomsite FROM topo FULL JOIN toposites ON topo.idtopo = toposites.idtopo FULL JOIN site ON toposites.idsite=site.idsite FULL JOIN utilisateur ON topo.idproprietaire=utilisateur.idutilisateur FULL JOIN phototopo ON topo.idtopo = phototopo.idtopo FULL JOIN reservation ON reservation.idtopo = topo.idtopo WHERE toposites.idtopo IN (SELECT idtopo FROM toposites FULL JOIN site ON toposites.idsite=site.idsite) AND (UPPER(nomtopo) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(descriptiontopo) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(nomsite) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(payssite) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(villesite) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(descriptionsite) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(nomutilisateur) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(prenomutilisateur) LIKE UPPER('%"+keyWordInput+"%') OR UPPER(descriptionutilisateur) LIKE UPPER('%"+keyWordInput+"%'))";
+		    	 if(disponibilite.equals("")==false) {
+	        		 requete=requete+" AND topo.idtopo NOT IN (SELECT topo.idtopo FROM topo FULL JOIN reservation ON topo.idtopo=reservation.idtopo WHERE DATE(NOW()) BETWEEN datedebut AND datefin)";
+	        	 }
+		    	 resultat=statement.executeQuery(requete);
+		     }else if(keyWordInput.equals("")==true && nomSiteInput.equals("")==false) {
+		    	 requete="SELECT DISTINCT topo.idtopo,topo.nomtopo,topo.descriptiontopo,phototopo.pathphoto,topo.idproprietaire,utilisateur.prenomutilisateur,utilisateur.nomutilisateur,site.idsite,site.nomsite FROM topo FULL JOIN toposites ON topo.idtopo = toposites.idtopo FULL JOIN site ON toposites.idsite=site.idsite FULL JOIN utilisateur ON topo.idproprietaire=utilisateur.idutilisateur FULL JOIN phototopo ON topo.idtopo = phototopo.idtopo FULL JOIN reservation ON reservation.idtopo = topo.idtopo WHERE toposites.idtopo IN (SELECT idtopo FROM toposites FULL JOIN site ON toposites.idsite=site.idsite WHERE nomsite='"+nomSiteInput+"')";
+		    	 if(disponibilite.equals("")==false) {
+	        		 requete=requete+" AND topo.idtopo NOT IN (SELECT topo.idtopo FROM topo FULL JOIN reservation ON topo.idtopo=reservation.idtopo WHERE DATE(NOW()) BETWEEN datedebut AND datefin)";
+	        	 }
+		    	 resultat=statement.executeQuery(requete);
+		     }else if(keyWordInput.equals("")==true && nomSiteInput.equals("")==true) {
+		    	 requete="SELECT DISTINCT topo.idtopo,topo.nomtopo,topo.descriptiontopo,phototopo.pathphoto,topo.idproprietaire,utilisateur.prenomutilisateur,utilisateur.nomutilisateur,site.idsite,site.nomsite FROM topo FULL JOIN toposites ON topo.idtopo = toposites.idtopo FULL JOIN site ON toposites.idsite=site.idsite FULL JOIN utilisateur ON topo.idproprietaire=utilisateur.idutilisateur FULL JOIN phototopo ON topo.idtopo = phototopo.idtopo FULL JOIN reservation ON reservation.idtopo = topo.idtopo WHERE toposites.idtopo IN (SELECT idtopo FROM toposites FULL JOIN site ON toposites.idsite=site.idsite)";
+		    	 if(disponibilite.equals("")==false) {
+	        		 requete=requete+" AND topo.idtopo NOT IN (SELECT topo.idtopo FROM topo FULL JOIN reservation ON topo.idtopo=reservation.idtopo WHERE DATE(NOW()) BETWEEN datedebut AND datefin)";
+	        	 }
+		    	 resultat=statement.executeQuery(requete);
+		     }
+	         while(resultat.next()) {
+	        	 Topo chaqueTopo=new Topo();
+	        	 chaqueTopo.setIdTopo(resultat.getInt("idtopo"));
+	        	 chaqueTopo.setNomTopo(CodageGuillemets.getTexteDecode(resultat.getString("nomtopo")));
+	        	 chaqueTopo.setDescriptionTopo(CodageGuillemets.getTexteDecode(resultat.getString("descriptiontopo")));
+	        	 String photo=CodageGuillemets.getTexteDecode(resultat.getString("pathphoto"));
+	        	 //
+	        	 Utilisateur proprietaire = new Utilisateur(0,"","","","","","","","");
+	        	 proprietaire.setId(resultat.getInt("idproprietaire"));
+	        	 proprietaire.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString("prenomutilisateur")));
+	        	 proprietaire.setNom(CodageGuillemets.getTexteDecode(resultat.getString("nomutilisateur")));
+	        	 //
+	        	 chaqueTopo.setProprietaire(proprietaire);
+	        	 chaqueTopo.setIdProprietaire(resultat.getInt("idproprietaire"));
+	        	 //
+	        	 Site siteAssocie = new Site();
+	        	 siteAssocie.setIdSite(resultat.getInt("idsite"));
+	        	 siteAssocie.setNomSite(CodageGuillemets.getTexteDecode(resultat.getString("nomsite")));
+	        	 //
+	        	 chaqueTopo.setSiteAssocie(siteAssocie);
+	        	 //
+	        	 //traitement spé des données d'aperçus photo
+	        	 if(photo!=null && !photo.isEmpty()) {
+	        		 photo="/escalade/img/"+"preview"+photo;
+	        		 chaqueTopo.setPhotopath(photo);
+	        	 }
+	        	 topos.add(chaqueTopo);
+	         }
+        }catch(SQLException e) {
+        	e.printStackTrace();
+        }finally {
+        	try {
+				connexion.close();
+				statement.close();
+	        	resultat.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+		return topos;
+	}
+
 }

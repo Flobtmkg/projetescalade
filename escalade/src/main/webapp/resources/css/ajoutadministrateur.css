@@ -1,0 +1,56 @@
+body{background-image:url(../img/fondescalade2_c80.jpg); background-repeat:repeat-y; background-attachment: fixed;background-size: 100% auto; min-width: 510px}
+div#divdefond{position:fixed;height:100%;width:100%; top:0px; background-color:rgba(0, 0, 0, 0.7); z-index: -1}
+div#blockinscription{background-color:rgba(255, 255, 255, 0.1);border-color:rgba(0, 0, 0, 0.3);color:rgba(204, 204, 204, 1);margin-top:50px; box-shadow:rgba(0,0,0,0.2) 0 3px 6px 0}
+p#infoobligatoire{color:rgba(255, 255, 255, 0.5); font-size:14px;padding-top:8px}
+h3{color:rgba(220, 220, 220, 1); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5)}
+legend{color:rgba(204, 204, 204, 1)}
+input#valider{box-shadow:rgba(0,0,0,0.2) 0 3px 6px 0}
+p{color:rgba(255, 255, 255, 1)}
+h2#validation{text-shadow:0px 2px 4px rgba(0, 0, 0, 0.2); color:rgba(0, 0, 0, 1); border-bottom:1px; border-bottom-color:rgba(0,0,0,0.1); border-bottom-style: solid}
+p#textvalidation{color:rgba(0, 0, 0, 1)}
+textarea#textDescription{resize: none;font-style: italic}
+div#buttonsupp2{margin-top:20px;padding-left:0;padding-right:0}
+#buttonFile{top:0px; margin:0px;float:left}
+label#labelparametre2{background-color:rgba(0,0,0,0.8);padding:5px;margin-top:0px;margin-bottom:2px;margin-left:-1px}
+label{margin-bottom:0px;margin-top:8px; padding-left:0px}
+#lesSelect{margin-right:-3px;}
+div#buttonAjout{margin-top:30px;}
+/**/
+.paspadding{
+	padding-left:0;
+	padding-right:0;
+}
+.label1{
+	color:rgba(180, 180, 180, 1);
+	text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);
+	border-color:rgba(180, 180, 180, 0.3);
+}
+/*Modification de la classe pour le message modal full CSS*/
+.cModal {
+  overflow-y: initial;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  opacity:0;
+  pointer-events: none;
+}
+.cModal:target {
+  opacity:1;
+  pointer-events: auto;
+}
+.cModal > div {
+  max-width: 500px;
+  position: relative;
+  margin: 10% auto;
+  padding: 8px 30px 15px 30px;
+  border-radius: 2px;
+  background: #fff;
+}
+.cModal > div > div {
+  max-height: 300px;
+  overflow-y: auto;
+}

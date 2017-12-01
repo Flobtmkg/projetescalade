@@ -24,7 +24,7 @@ public class BilanReservation {
 				Notification notificationBilan=new Notification();
 				notificationBilan.setIdTopo(derniereReservation.getIdTopo());
 				notificationBilan.setIdUtilisateurDestinataire(derniereReservation.getIdUtilisateur());
-				notificationBilan.setIdUtilisateurDestinataire(proprietaire.getId());
+				//notificationBilan.setIdUtilisateurExpediteur(proprietaire.getId());
 				notificationBilan.setTypeNotification("Bilan de réservation");
 				notificationBilan.setTraitementNotification("");
 				notificationBilan.setParametreNotification(String.valueOf(derniereReservation.getIdReservation()));

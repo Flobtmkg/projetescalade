@@ -5,10 +5,10 @@
 			</div>
 		<div id="liensmenu" class="col-xs-offset-1">
 	    	<ul class="nav navbar-nav">
-				<li><a href="./sites">Parcourir les sites</a></li>
-				<li><a href="./topos">Parcourir les topos</a></li>
-				<li><a href="./recherche">Rechercher par critères</a></li>
-				<li><a href="./inscription">Inscrivez vous ici !</a></li>
+				<li><a href="./sites"><span class="glyphicon glyphicon-search"></span> Rechercher sites</a></li>
+				<li><a href="./topos"><span class="glyphicon glyphicon-search"></span> Rechercher topos</a></li>
+				<li><a href="./suggestions"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+				<li><a href="./inscription"><span class="glyphicon glyphicon-edit"></span> Inscrivez vous ici !</a></li>
 			</ul>
 		</div>
 		<div id="connexion" class="navbar-right">

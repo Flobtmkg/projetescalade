@@ -1,0 +1,56 @@
+body{background-image:url(../img/fondescalade2_c80.jpg); background-repeat:repeat-y; background-attachment: fixed;background-size: 100% auto; min-width: 510px}
+h1{color:rgba(230, 230, 230, 1);font-weight:100;font-size:300%;text-shadow:0px 2px 4px rgba(0, 0, 0, 1)}
+h2{color:rgba(230, 230, 230, 1);font-weight:500;font-size:180%; text-shadow:0px 2px 4px rgba(0, 0, 0, 1)}
+div#presentation{position:relative; top:150px}
+div#barreDeRecherche{padding:0; margin-top:0px}
+div#divdefond{position:fixed;height:100%;width:100%; top:0px; background-color:rgba(0, 0, 0, 0.7); z-index: -1}
+#cadrephoto{height:100px;width:100px; float:left; margin-bottom:10px; border-radius:4px}
+div#blockTransparent{height:400px;width:20px; float:left}
+textarea#textDescription{resize: none;font-style: italic}
+textarea#textDescription0{resize: none;font-style: italic;color:rgba(220,220,220,1);background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0)}
+textarea#textDescription1{resize: none;font-style: italic;color:rgba(220,220,220,1);background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0);width:33.33%!important;padding:0}
+form#blockdescription{margin-top:20px;padding:0px;background-color:rgba(255,255,255,0.07)}
+form#blockdescription2{margin-top:10px;padding-left:10px;padding-top:0px;padding-right:10px;padding-bottom:0px;background-color:rgba(255,255,255,0.1)}
+form#blockdescription3{margin-top:-20px;padding:20px;background-color:rgba(255,255,255,0.1);box-shadow: rgba(0,0,0,0.1) 0 3px 6px 0;z-index: 0; border-radius: 0px 0px 0px 0px;}
+div#paneldescription{margin-bottom:10px}
+#textADroite{float:right}
+#infossurnoir{color:rgba(220, 220, 220, 1); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);}
+#infossoftsurnoir{color:rgba(220, 220, 220, 0.6); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);}
+#infoimportante{color:rgba(220, 120, 120, 0.5); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);}
+#infoimportante2{color:rgba(220, 120, 120, 1);}
+#infossurnoirheader{color:rgba(220, 220, 220, 1); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);padding-left:0}
+#petittextsurnoir{color:rgba(200, 200, 200, 1);padding-left:0; margin-top:0px; margin-bottom:5px; margin-left:0px; margin-right:0px}
+#infossurblanc{text-shadow:0px 2px 4px rgba(0, 0, 0, 0.2); color:rgba(0, 0, 0, 1); border-bottom:1px; border-bottom-color:rgba(0,0,0,0.1); border-bottom-style: solid}
+#infossurblanc2{text-shadow:0px 2px 4px rgba(0, 0, 0, 0.2); color:rgba(0, 0, 0, 1);border:none}
+p#textvalidation{color:rgba(0, 0, 0, 1)}
+input#btnvalider{margin-top:22px; width:79px}
+a#reglage{float:left; height:30px; padding-top:7px; padding-bottom:7px; padding-left:10px; padding-right:10px}
+a#liensDuHaut{color:rgba(180, 180, 180, 1)!important;}
+p#aafficherenligne{display: inline; margin-right:10px}
+label#labelparametre{background-color:rgba(0,0,0,0.4);padding:5px;margin-top:0px}
+label{margin-top:8px;}
+ul#pager{position:absolute; left: 50%; transform: translate(-50%, -50%);top:10px}
+div#conteneurPager{height:40px}
+div#infosDroiteImage{padding-left:10px}
+div#butonRecherche{margin-top:28px; margin-bottom:5px}
+div#aligneADroite{float:right;padding:0}
+div#aligneAGauche{padding:0}
+div#secteurscroll{max-height: 80px;overflow-y: auto;margin-top:5px}
+div#table-scroll{max-height: 200px;overflow-y: auto;margin-top:5px}
+div#buttonsupp{margin-top:30px;padding-left:0}
+div#ligne{border-bottom:1px;border-color:rgba(180, 180, 180, 0.05);border-bottom-style: solid;padding-top:10px; margin-left:0px;margin-right:0px}
+div#ligneheader{border-bottom:2px;border-color:rgba(255, 255, 255, 0.6);border-bottom-style: solid}
+div#contenuheader{padding-left:15px;padding-right:15px}
+.label1{
+	color:rgba(180, 180, 180, 1);
+	text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);
+	border-color:rgba(180, 180, 180, 0.3);
+}
+.form-group{margin-bottom:0px}
+div.card {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+}
+.card:hover {
+	box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.4), 0 6px 20px 0 rgba(255, 255, 255, 0.4);
+}

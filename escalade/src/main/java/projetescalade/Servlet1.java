@@ -6,9 +6,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import javabeans.Utilisateur;
 
 
 public class Servlet1 extends HttpServlet {
@@ -16,7 +13,7 @@ public class Servlet1 extends HttpServlet {
 
     public Servlet1() {
         super();
-        // TODO Auto-generated constructor stub
+        // 
     }
     
 

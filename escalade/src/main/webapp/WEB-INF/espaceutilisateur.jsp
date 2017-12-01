@@ -12,6 +12,11 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/menuutilisateur.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/fichierupload.js"></script>
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/espaceutilisateur.css" rel="stylesheet">
+    <!-- système de scrollbar -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/jqueryscrollbar/jquery.mCustomScrollbar.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jqueryscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	 <!-- système de scrollbar -->
 	<title>Espace de ${sessionScope.utilisateurencours.prenom}</title>
 </head>
 <body>
@@ -163,7 +168,7 @@
 						<input id="fichierSelectonne" placeholder="Aucun fichier sélectionné" type="text" class="form-control" readonly>
 					</div>
 					<label id="labelPlusBas">Ajoutez les sites décrits par l'ouvrage:</label>
-	    			<div id="table-scroll2" class="col-xs-12">
+	    			<div id="table-scroll2" class="col-xs-12 mCustomScrollbar" data-mcs-theme="dark-thin">
 		    			<c:forEach items="${sessionScope.allSites}" var="spot">
 		    				<div id="blockCheck" class="checkbox">
 								<label><input type="checkbox" name="spot${spot.idSite}"><a target="_blank" href="site?site=${spot.idSite}">${spot.nomSite}</a></label>
@@ -171,7 +176,7 @@
 		    			</c:forEach>
 	    			</div>
 	    			<div id="lien" class="col-xs-12">
-	    				<a href="" >Pour nous faire des suggestions de sites à ajouter cliquez ici</a>
+	    				<a href="suggestions" >Pour nous faire des suggestions de sites à ajouter cliquez ici</a>
 	    			</div>
 				    <footer class="col-xs-12">
 				    	<a href="#fermer" id="btnFermer" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> Annuler</a>
@@ -313,8 +318,7 @@
 									<label id="infossurnoirheader" class="col-xs-6">Sujet</label>
 								</div>
 							</div>
-							<div class="col-xs-12">
-								<div id="table-scroll" class="col-xs-12">
+								<div id="table-scroll" class="col-xs-12 mCustomScrollbar" data-mcs-theme="light-thin">
 										<c:forEach items="${sessionScope.notificationDelUtilisateur}" var="notification">
 									    		<div id="ligne" class="row">
 									    				<c:if test="${empty notification.utilisateurExpediteur.prenom||empty notification.utilisateurExpediteur.nom}">
@@ -327,7 +331,6 @@
 											    </div>
 										</c:forEach>
 								</div>
-							</div>
 						</c:if>
 						<c:if test="${empty sessionScope.notificationDelUtilisateur}">
 							<h5 id="infossurnoir">Vous n'avez aucune notification pour le moment.</h5>
@@ -347,8 +350,7 @@
 								<label id="infossurnoirheader" class="col-xs-6">Disponibilité</label>
 							</div>
 						</div>
-						<div class="col-xs-12">
-							<div id="table-scroll" class="col-xs-12">
+							<div id="table-scroll" class="col-xs-12 mCustomScrollbar" data-mcs-theme="light-thin">
 								<c:forEach items="${sessionScope.topoDelUtilisateur}" var="topo">
 								    		<div id="ligne" class="row">
 										        	<p id="petittextsurnoir"  class="col-xs-6"><a target="_blank" href="topo?topo=${topo.idTopo}" >${topo.nomTopo}</a></p>
@@ -361,7 +363,6 @@
 										    </div>
 								</c:forEach>
 							</div>
-						</div>
 					</c:if>
 					<c:if test="${empty sessionScope.topoDelUtilisateur}">
 							<h5 id="infossurnoir">Vous ne possédez pas de topo pour le moment.</h5>
@@ -387,8 +388,7 @@
 								<label id="infossurnoirheader" class="col-xs-3">Propriétaire</label>
 							</div>
 						</div>
-						<div class="col-xs-12">
-							<div id="table-scroll" class="col-xs-12">
+							<div id="table-scroll" class="col-xs-12 mCustomScrollbar" data-mcs-theme="light-thin">
 								<c:forEach items="${sessionScope.reservationDelUtilisateur}" var="reservation">
 								    		<div id="ligne" class="row">
 										        	<p id="petittextsurnoir"  class="col-xs-3"><a target="_blank" href="topo?topo=${reservation.topoAssocié.idTopo}" >${reservation.topoAssocié.nomTopo}</a></p>
@@ -398,7 +398,6 @@
 										    </div>
 								</c:forEach>
 							</div>
-						</div>
 					</c:if>
 					<c:if test="${empty sessionScope.reservationDelUtilisateur}">
 							<h5 id="infossurnoir">Vous n'avez fait aucune réservation pour le moment.</h5>
@@ -418,8 +417,7 @@
 							<label id="infossurnoirheader" class="col-xs-5">Contenu</label>
 						</div>
 					</div>
-					<div class="col-xs-12">
-						<div id="table-scroll" class="col-xs-12">
+						<div id="table-scroll" class="col-xs-12 mCustomScrollbar" data-mcs-theme="light-thin">
 							<c:forEach items="${sessionScope.reservationDelUtilisateur}" var="reservation">
 							    <c:if test="${!empty reservation.commentaireReservation}">
 							    		<div id="ligne" class="row">
@@ -437,7 +435,6 @@
 								      	</div>
 							</c:forEach>
 						</div>
-					</div>
 				</div>
 			</form>
 	</div>

@@ -5,6 +5,26 @@
     <param-name>filePath</param-name>
     <param-value>C:/projetescalade/img/</param-value>
   </context-param>
+  <context-param>
+    <param-name>emailHost</param-name>
+    <param-value>smtp.googlemail.com</param-value>
+  </context-param>
+  <context-param>
+    <param-name>emailAccount</param-name>
+    <param-value>suggestions.projetescalade@gmail.com</param-value>
+  </context-param>
+  <context-param>
+    <param-name>emailAccountPassword</param-name>
+    <param-value>appliescalade</param-value>
+  </context-param>
+  <context-param>
+    <param-name>idadmin</param-name>
+    <param-value>Admin</param-value>
+  </context-param>
+  <context-param>
+    <param-name>mdpadmin</param-name>
+    <param-value>azertyuiop</param-value>
+  </context-param>
   <servlet>
   	<display-name>Servlet1</display-name>
   	<servlet-name>Servlet1</servlet-name>
@@ -113,6 +133,40 @@
   	<servlet-name>ServletAjoutImageUtilisateur</servlet-name>
   	<servlet-class>projetescalade.ServletAjoutImageUtilisateur</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ServletSecteur</display-name>
+  	<servlet-name>ServletSecteur</servlet-name>
+  	<servlet-class>projetescalade.ServletSecteur</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ServletVoie</display-name>
+  	<servlet-name>ServletVoie</servlet-name>
+  	<servlet-class>projetescalade.ServletVoie</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>AjoutAdministrateur</display-name>
+  	<servlet-name>AjoutAdministrateur</servlet-name>
+  	<servlet-class>projetescalade.AjoutAdministrateur</servlet-class>
+  	<multipart-config>
+	    <location></location>
+	    <max-file-size>10485760</max-file-size>
+	    <max-request-size>52428800</max-request-size>
+	    <file-size-threshold>1048576</file-size-threshold>
+	</multipart-config>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>SuggestionsUtilisateurs</display-name>
+  	<servlet-name>SuggestionsUtilisateurs</servlet-name>
+  	<servlet-class>projetescalade.SuggestionsUtilisateurs</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Servlet1</servlet-name>
   	<url-pattern>/accueil</url-pattern>
@@ -168,6 +222,22 @@
   <servlet-mapping>
   	<servlet-name>ServletAjoutImageUtilisateur</servlet-name>
   	<url-pattern>/ajoutimageutilisateur</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletSecteur</servlet-name>
+  	<url-pattern>/secteur</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletVoie</servlet-name>
+  	<url-pattern>/voie</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AjoutAdministrateur</servlet-name>
+  	<url-pattern>/ajoutadministrateur</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SuggestionsUtilisateurs</servlet-name>
+  	<url-pattern>/suggestions</url-pattern>
   </servlet-mapping>
   <jsp-config>
   	<jsp-property-group>

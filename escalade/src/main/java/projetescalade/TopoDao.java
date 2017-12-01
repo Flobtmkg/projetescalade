@@ -10,4 +10,5 @@ Topo trouverTopo(int idtopo);
 ArrayList<Topo> trouverTopo(ArrayList<Integer> idTopoInput);
 String ajoutTopo(Topo topoAAjouter);
 Topo trouverTopoSansIdTopo(int idproprietaire, String titreTopo, String descriptionTopo);
+ArrayList<Topo> trouverParCritere(String nomSiteInput, String keyWordInput, String disponibilite);
 }

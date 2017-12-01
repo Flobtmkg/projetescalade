@@ -1,0 +1,36 @@
+body{background-image:url(../img/fondescalade2_c80.jpg); background-repeat:repeat-y; background-attachment: fixed;background-size: 100% auto; min-width: 510px}
+div#divdefond{position:fixed;height:100%;width:100%; top:0px; background-color:rgba(0, 0, 0, 0.7); z-index: -1}
+div#cadrephoto{height:400px;width:400px; float:left}
+div#blockTransparent{height:400px;width:20px; float:left}
+textarea#textDescription{resize: none;font-style: italic}
+textarea#textDescription0{resize: none;font-style: italic;color:rgba(220,220,220,1);background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0)}
+textarea#textDescription1{resize: none;font-style: italic;color:rgba(220,220,220,1);background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0);width:33.33%!important;padding:0}
+form#blockdescription{margin-top:20px;padding:0px;background-color:rgba(255,255,255,0.1)}
+form#blockdescription2{margin-top:10px;padding-left:10px;padding-top:0px;padding-right:10px;padding-bottom:0px;background-color:rgba(255,255,255,0.1)}
+div#paneldescription{margin-bottom:10px}
+#infossurnoir{color:rgba(220, 220, 220, 1); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);}
+#infossoftsurnoir{color:rgba(220, 220, 220, 0.6); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);}
+#infoimportante{color:rgba(220, 120, 120, 0.5); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);}
+#infoimportante2{color:rgba(220, 120, 120, 1);}
+#infossurnoirheader{color:rgba(220, 220, 220, 1); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);padding-left:0}
+#petittextsurnoir{color:rgba(200, 200, 200, 1);padding-left:0}
+#infossurblanc{text-shadow:0px 2px 4px rgba(0, 0, 0, 0.2); color:rgba(0, 0, 0, 1); border-bottom:1px; border-bottom-color:rgba(0,0,0,0.1); border-bottom-style: solid}
+#infossurblanc2{text-shadow:0px 2px 4px rgba(0, 0, 0, 0.2); color:rgba(0, 0, 0, 1);border:none}
+p#textvalidation{color:rgba(0, 0, 0, 1)}
+input#btnvalider{margin-top:22px; width:79px}
+a#reglage{float:left; height:30px; padding-top:7px; padding-bottom:7px; padding-left:10px; padding-right:10px}
+a#liensDuHaut{color:rgba(180, 180, 180, 1)!important;}
+p#aafficherenligne{display: inline; margin-right:10px}
+label#labelparametre{background-color:rgba(0,0,0,0.4);padding:5px;margin-top:0px}
+label{margin-top:8px;}
+div#indisponiblescroll{max-height: 80px;overflow-y: auto;margin-top:5px}
+div#table-scroll{max-height: 200px;overflow-y: auto;margin-top:5px}
+div#buttonsupp{margin-top:30px;padding-left:0}
+div#ligne{border-bottom:1px;border-color:rgba(180, 180, 180, 0.05);border-bottom-style: solid;padding-top:10px; margin-left:0px;margin-right:0px}
+div#ligneheader{border-bottom:2px;border-color:rgba(255, 255, 255, 0.6);border-bottom-style: solid}
+div#contenuheader{padding-left:15px;padding-right:15px}
+.label1{
+	color:rgba(180, 180, 180, 1);
+	text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);
+	border-color:rgba(180, 180, 180, 0.3);
+}

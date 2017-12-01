@@ -67,4 +67,19 @@ public class ConnexionDao {
 	 public PhotoUtilisateurDao getPhotoUtilisateurDao() {
 	        return new BddPhotoUtilisateurDao(this);
 	    }
+	 public SecteurDao getSecteurDao() {
+		 return new BddSecteurDao(this);
+	 }
+	 public VoieDao getVoieDao() {
+		 return new BddVoieDao(this);
+	 }
+	 public PhotoSiteDao getPhotoSiteDao() {
+		 return new BddPhotoSiteDao(this);
+	 }
+	 public PhotoSecteurDao getPhotoSecteurDao() {
+		 return new BddPhotoSecteurDao(this);
+	 }
+	 public PhotoVoieDao getPhotoVoieDao() {
+		 return new BddPhotoVoieDao(this);
+	 }
 }

@@ -11,6 +11,11 @@
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/menu.css" rel="stylesheet">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/menuutilisateur.js"></script>
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/topo.css" rel="stylesheet">
+    <!-- système de scrollbar -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/jqueryscrollbar/jquery.mCustomScrollbar.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jqueryscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	 <!-- système de scrollbar -->
 	<title>Descriptif de ${topofound.nomTopo}</title>
 </head>
 <body>
@@ -114,11 +119,13 @@
 				</c:if>
 				<c:if test="${!empty listeNonDisponible}">
 					<form id="blockdescription2" class="panel">
-						<label id="infossurnoirheader">Périodes d'indisponibilité:</label>
-						<div id="indisponiblescroll">
-							<c:forEach items="${listeNonDisponible}" var="reservation">
-							<p id="petittextsurnoir">${textNonDispo}Réservation programmée entre le ${reservation.datedebutReservationFR} et le ${reservation.datefinReservationFR}</p>
-						</c:forEach>
+						<div id="paneldescription2" class="panel-body">
+							<label id="infossurnoirheader">Périodes d'indisponibilité:</label>
+							<div id="indisponiblescroll" class="col-xs-12 mCustomScrollbar" data-mcs-theme="light-thin">
+								<c:forEach items="${listeNonDisponible}" var="reservation">
+									<p id="petittextsurnoir">${textNonDispo}Réservation programmée entre le ${reservation.datedebutReservationFR} et le ${reservation.datefinReservationFR}</p>
+								</c:forEach>
+							</div>
 						</div>
 					</form>
 				</c:if>
@@ -137,8 +144,7 @@
 								<label id="infossurnoirheader" class="col-xs-4">Ville</label>
 							</div>
 						</div>
-						<div class="col-xs-12">
-							<div id="table-scroll" class="col-xs-12">
+							<div id="table-scroll" class="col-xs-12 mCustomScrollbar" data-mcs-theme="light-thin">
 								<c:forEach items="${sitesconcernes}" var="site">
 								    		<div id="ligne" class="row">
 										        	<p id="petittextsurnoir"  class="col-xs-4"><a target="_blank" href="site?site=${site.idSite}" >${site.nomSite}</a></p>
@@ -147,7 +153,6 @@
 										    </div>
 								</c:forEach>
 							</div>
-						</div>
 					</c:if>
 					<c:if test="${empty sitesconcernes}">
 							<h5 id="infossurnoir">La liste des sites décrit par ce topo n'est pas renseignée pour le moment.</h5>
@@ -180,8 +185,7 @@
 									<label id="infossurnoirheader" class="col-xs-5">Contenu</label>
 								</div>
 							</div>
-							<div class="col-xs-12">
-								<div id="table-scroll" class="col-xs-12">
+								<div id="table-scroll" class="col-xs-12 mCustomScrollbar" data-mcs-theme="light-thin">
 									<c:forEach items="${reservationsdutopo}" var="reservation">
 									    <c:if test="${!empty reservation.commentaireReservation}">
 									    		<div id="ligne" class="row">
@@ -192,7 +196,6 @@
 										</c:if>
 									</c:forEach>
 								</div>
-							</div>
 						</c:if>
 						<c:if test="${empty reservationsdutopo}">
 							<h5 id="infossurnoir">Aucun commentaire de réservation n'a été posté pour le moment.</h5>

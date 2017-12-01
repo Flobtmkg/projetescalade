@@ -153,7 +153,7 @@
 				</div>
 			</div>
 			<div class="col-sm-10 col-sm-offset-1">
-				<p>Pour nous contacter directement, ajouter des spots vérifiés, ou toute autre demande envoyez un e-mail a: escalade@gmail.com</p>
+				<p>Pour nous contacter directement, ajouter des spots vérifiés, ou toute autre demande <a href="suggestions" >contactez nous ici</a></p>
 			</div>
 		</div>
 			

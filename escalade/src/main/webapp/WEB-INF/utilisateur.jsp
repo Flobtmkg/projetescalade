@@ -11,6 +11,11 @@
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/menu.css" rel="stylesheet">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/menuutilisateur.js"></script>
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/utilisateur.css" rel="stylesheet">
+    <!-- système de scrollbar -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/jqueryscrollbar/jquery.mCustomScrollbar.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/jqueryscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	 <!-- système de scrollbar -->
 	<title>${utilisateurfound.prenom} ${utilisateurfound.nom}</title>
 </head>
 <body>
@@ -63,8 +68,7 @@
 								<label id="infossurnoirheader" class="col-xs-6">Disponibilité</label>
 							</div>
 						</div>
-						<div class="col-xs-12">
-							<div id="table-scroll" class="col-xs-12">
+							<div id="table-scroll" class="col-xs-12 mCustomScrollbar" data-mcs-theme="light-thin">
 								<c:forEach items="${toposfound}" var="topo">
 								    		<div id="ligne" class="row">
 										        	<p id="petittextsurnoir"  class="col-xs-6"><a target="_blank" href="topo?topo=${topo.idTopo}" >${topo.nomTopo}</a></p>
@@ -77,7 +81,6 @@
 										    </div>
 								</c:forEach>
 							</div>
-						</div>
 					</c:if>
 					<c:if test="${empty toposfound}">
 							<h5 id="infossurnoir">${utilisateurfound.prenom} ${utilisateurfound.nom} ne possède pas de topo pour le moment.</h5>
@@ -97,8 +100,7 @@
 							<label id="infossurnoirheader" class="col-xs-5">Contenu</label>
 						</div>
 					</div>
-					<div class="col-xs-12">
-						<div id="table-scroll" class="col-xs-12">
+						<div id="table-scroll" class="col-xs-12 mCustomScrollbar" data-mcs-theme="light-thin">
 							<c:forEach items="${reservationsfound}" var="reservation">
 							    <c:if test="${!empty reservation.commentaireReservation}">
 							    		<div id="ligne" class="row">
@@ -116,7 +118,6 @@
 								      	</div>
 							</c:forEach>
 						</div>
-					</div>
 				</div>
 			</form>
 	</div>

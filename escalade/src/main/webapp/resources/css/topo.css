@@ -8,6 +8,7 @@ textarea#textDescription1{resize: none;font-style: italic;color:rgba(220,220,220
 form#blockdescription{margin-top:20px;padding:0px;background-color:rgba(255,255,255,0.1)}
 form#blockdescription2{margin-top:10px;padding-left:10px;padding-top:0px;padding-right:10px;padding-bottom:0px;background-color:rgba(255,255,255,0.1)}
 div#paneldescription{margin-bottom:10px}
+div#paneldescription2{margin-bottom:10px;padding:0}
 #infossurnoir{color:rgba(220, 220, 220, 1); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);}
 #infossoftsurnoir{color:rgba(220, 220, 220, 0.6); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);}
 #infoimportante{color:rgba(220, 120, 120, 0.5); text-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);}
@@ -22,7 +23,7 @@ label{margin-top:8px;}
 div#indisponiblescroll{max-height: 80px;overflow-y: auto;margin-top:5px}
 div#table-scroll{max-height: 200px;overflow-y: auto;margin-top:5px}
 div#buttonsupp{margin-top:30px;padding-left:0}
-div#ligne{border-bottom:1px;border-color:rgba(180, 180, 180, 0.05);border-bottom-style: solid;padding-top:10px}
+div#ligne{border-bottom:1px;border-color:rgba(180, 180, 180, 0.05);border-bottom-style: solid;padding-top:10px;margin-left:0px;margin-right:0px}
 div#ligneheader{border-bottom:2px;border-color:rgba(255, 255, 255, 0.6);border-bottom-style: solid}
 div#contenuheader{padding-left:15px;padding-right:15px}
 .label1{
