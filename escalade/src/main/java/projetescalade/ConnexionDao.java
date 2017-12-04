@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import jdk.nashorn.internal.runtime.Context;
+
 public class ConnexionDao {
 	private String url;
 	private String username;
@@ -13,16 +15,17 @@ public class ConnexionDao {
 		this.url=urlinput;
 		this.username=usernameinput;
 		this.password=passwordinput;
+		
 	}
 	
-	public static ConnexionDao getInstance() {
+	public static ConnexionDao getInstance(String postgresqlUsername, String postgresqlPassword) {
 		
 		try {
 			Class.forName("org.postgresql.Driver");
 		}catch(ClassNotFoundException e){
 			
 		}
-		ConnexionDao instance = new ConnexionDao("jdbc:postgresql://localhost:5432/escalade", "postgres", "flosql75301");
+		ConnexionDao instance = new ConnexionDao("jdbc:postgresql://localhost:5432/escalade", postgresqlUsername, postgresqlPassword);
 		return instance;
 	}
 	

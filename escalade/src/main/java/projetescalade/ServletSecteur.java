@@ -36,7 +36,7 @@ public class ServletSecteur extends HttpServlet {
 	private CalculDate aujourdhui;
 	//
 	public void init() throws ServletException {
-		maconnexion = ConnexionDao.getInstance();
+		maconnexion = ConnexionDao.getInstance(getServletContext().getInitParameter("postgresqlUsername"),getServletContext().getInitParameter("postgresqlPassword"));
 		this.accesBddSecteur=maconnexion.getSecteurDao();
 		this.accesBddPhotoSecteur=maconnexion.getPhotoSecteurDao();
 		this.accesBddSite=maconnexion.getSiteDao();

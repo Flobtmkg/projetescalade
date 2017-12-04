@@ -28,7 +28,7 @@ public class ServletRechercheTopo extends HttpServlet {
 	private TopoDao accesBddTopo;
     
     public void init() throws ServletException {
-        maconnexion = ConnexionDao.getInstance();
+        maconnexion = ConnexionDao.getInstance(getServletContext().getInitParameter("postgresqlUsername"),getServletContext().getInitParameter("postgresqlPassword"));
         this.accesBddSite=maconnexion.getSiteDao();
         this.accesBddTopo=maconnexion.getTopoDao();
     }

@@ -18,7 +18,7 @@ public class ServletInscription extends HttpServlet {
 	private UtilisateurDao accesBddUtilisateur;
 
 	public void init() throws ServletException {
-        ConnexionDao maconnexion = ConnexionDao.getInstance();
+        ConnexionDao maconnexion = ConnexionDao.getInstance(getServletContext().getInitParameter("postgresqlUsername"),getServletContext().getInitParameter("postgresqlPassword"));
         this.accesBddUtilisateur = maconnexion.getUtilisateurDao();
     }
 	

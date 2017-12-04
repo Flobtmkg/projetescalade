@@ -18,6 +18,14 @@
     <param-value>appliescalade</param-value>
   </context-param>
   <context-param>
+    <param-name>postgresqlUsername</param-name>
+    <param-value>postgres</param-value>
+  </context-param>
+  <context-param>
+    <param-name>postgresqlPassword</param-name>
+    <param-value>flosql75301</param-value>
+  </context-param>
+  <context-param>
     <param-name>idadmin</param-name>
     <param-value>Admin</param-value>
   </context-param>

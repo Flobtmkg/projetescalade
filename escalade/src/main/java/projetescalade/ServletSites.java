@@ -22,7 +22,7 @@ public class ServletSites extends HttpServlet {
 	private VoieDao accesBddVoie;
     
     public void init() throws ServletException {
-        maconnexion = ConnexionDao.getInstance();
+        maconnexion = ConnexionDao.getInstance(getServletContext().getInitParameter("postgresqlUsername"),getServletContext().getInitParameter("postgresqlPassword"));
         this.accesBddSite=maconnexion.getSiteDao();
         this.accesBddVoie=maconnexion.getVoieDao();
     }

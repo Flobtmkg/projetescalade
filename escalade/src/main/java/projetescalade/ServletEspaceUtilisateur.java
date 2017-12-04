@@ -38,7 +38,7 @@ public class ServletEspaceUtilisateur extends HttpServlet {
 	//
 
 	public void init() throws ServletException {
-        maconnexion = ConnexionDao.getInstance();
+        maconnexion = ConnexionDao.getInstance(getServletContext().getInitParameter("postgresqlUsername"),getServletContext().getInitParameter("postgresqlPassword"));
         this.accesBddUtilisateur = maconnexion.getUtilisateurDao();
         this.accesBddNotification=maconnexion.getNotificationDao();
         this.accesBddReservation=maconnexion.getReservationDao();
