@@ -15,7 +15,7 @@ import javabeans.Site;
 import javabeans.Voie;
 
 
-public class AjoutAdministrateur extends HttpServlet {
+public class ServletAjoutAdministrateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//
 	ConnexionDao maconnexion;
@@ -36,7 +36,7 @@ public class AjoutAdministrateur extends HttpServlet {
         this.accesBddPhotoVoie=maconnexion.getPhotoVoieDao();
     }
 
-    public AjoutAdministrateur() {
+    public ServletAjoutAdministrateur() {
         super();
         //
     }

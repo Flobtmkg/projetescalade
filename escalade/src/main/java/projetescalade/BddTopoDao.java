@@ -34,10 +34,10 @@ public class BddTopoDao implements TopoDao {
 	         resultat=statement.executeQuery("SELECT * FROM topo WHERE idproprietaire='"+idproprietaire+"'");
 	         while(resultat.next()) {
 	        	 Topo chaqueTopo =new Topo();
-	        	 chaqueTopo.setIdTopo(resultat.getInt(1));
-	        	 chaqueTopo.setIdProprietaire(resultat.getInt(2));
-	        	 chaqueTopo.setNomTopo(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 chaqueTopo.setDescriptionTopo(CodageGuillemets.getTexteDecode(resultat.getString(4)));
+	        	 chaqueTopo.setIdTopo(resultat.getInt("idtopo"));
+	        	 chaqueTopo.setIdProprietaire(resultat.getInt("idproprietaire"));
+	        	 chaqueTopo.setNomTopo(CodageGuillemets.getTexteDecode(resultat.getString("nomtopo")));
+	        	 chaqueTopo.setDescriptionTopo(CodageGuillemets.getTexteDecode(resultat.getString("descriptiontopo")));
 	        	 toposPossede.add(chaqueTopo);
 	         }
         }catch(SQLException e) {
@@ -66,10 +66,10 @@ public class BddTopoDao implements TopoDao {
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM topo WHERE idtopo='"+idtopo+"'");
 	         while(resultat.next()) {
-	        	 topoOutput.setIdTopo(resultat.getInt(1));
-	        	 topoOutput.setIdProprietaire(resultat.getInt(2));
-	        	 topoOutput.setNomTopo(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 topoOutput.setDescriptionTopo(CodageGuillemets.getTexteDecode(resultat.getString(4)));
+	        	 topoOutput.setIdTopo(resultat.getInt("idtopo"));
+	        	 topoOutput.setIdProprietaire(resultat.getInt("idproprietaire"));
+	        	 topoOutput.setNomTopo(CodageGuillemets.getTexteDecode(resultat.getString("nomtopo")));
+	        	 topoOutput.setDescriptionTopo(CodageGuillemets.getTexteDecode(resultat.getString("descriptiontopo")));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();
@@ -110,10 +110,10 @@ public class BddTopoDao implements TopoDao {
 	         resultat=statement.executeQuery("SELECT * FROM topo WHERE "+clauseWhere+";");
 	         while(resultat.next()) {
 	        	 Topo chaqueTopo=new Topo();
-	        	 chaqueTopo.setIdTopo(resultat.getInt(1));
-	        	 chaqueTopo.setIdProprietaire(resultat.getInt(2));
-	        	 chaqueTopo.setNomTopo(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 chaqueTopo.setDescriptionTopo(CodageGuillemets.getTexteDecode(resultat.getString(4)));
+	        	 chaqueTopo.setIdTopo(resultat.getInt("idtopo"));
+	        	 chaqueTopo.setIdProprietaire(resultat.getInt("idproprietaire"));
+	        	 chaqueTopo.setNomTopo(CodageGuillemets.getTexteDecode(resultat.getString("nomtopo")));
+	        	 chaqueTopo.setDescriptionTopo(CodageGuillemets.getTexteDecode(resultat.getString("descriptiontopo")));
 	        	 toposOutput.add(chaqueTopo);
 	         }
         }catch(SQLException e) {
@@ -182,10 +182,10 @@ public class BddTopoDao implements TopoDao {
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM topo WHERE idproprietaire="+idproprietaire+" AND nomtopo='"+titreTopo+"' AND descriptiontopo='"+descriptionTopo+"'");
 	         while(resultat.next()) {
-	        	 topoOutput.setIdTopo(resultat.getInt(1));
-	        	 topoOutput.setIdProprietaire(resultat.getInt(2));
-	        	 topoOutput.setNomTopo(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 topoOutput.setDescriptionTopo(CodageGuillemets.getTexteDecode(resultat.getString(4)));
+	        	 topoOutput.setIdTopo(resultat.getInt("idtopo"));
+	        	 topoOutput.setIdProprietaire(resultat.getInt("idproprietaire"));
+	        	 topoOutput.setNomTopo(CodageGuillemets.getTexteDecode(resultat.getString("nomtopo")));
+	        	 topoOutput.setDescriptionTopo(CodageGuillemets.getTexteDecode(resultat.getString("descriptiontopo")));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();

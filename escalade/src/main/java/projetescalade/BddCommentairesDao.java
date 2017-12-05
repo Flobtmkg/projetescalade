@@ -33,12 +33,12 @@ public class BddCommentairesDao implements CommentaireDao {
 	         resultat=statement.executeQuery("SELECT * FROM commentaires WHERE idutilisateur="+idutilisateur+";");
 	         while(resultat.next()) {
 	        	 Commentaire chaqueCommentaire =new Commentaire();
-	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt(1));
-	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt(2));
-	        	 chaqueCommentaire.setIdSite(resultat.getInt(3));
-	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString(5)));
-	        	 conversiondedate=resultat.getDate(6);
+	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt("idcommentaire"));
+	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 chaqueCommentaire.setIdSite(resultat.getInt("idsite"));
+	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("contenucommentaire")));
+	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("ipcommentaire")));
+	        	 conversiondedate=resultat.getDate("datecommentaire");
 	        	 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
 	        	 commentairesenvoye.add(chaqueCommentaire);
 	         }
@@ -71,15 +71,15 @@ public class BddCommentairesDao implements CommentaireDao {
 	         resultat=statement.executeQuery("SELECT * FROM commentaires WHERE idsite="+idSite+";");
 	         while(resultat.next()) {
 	        	 Commentaire chaqueCommentaire =new Commentaire();
-	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt(1));
-	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt(2));
-	        	 chaqueCommentaire.setIdSite(resultat.getInt(3));
-	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString(5)));
-	        	 conversiondedate=resultat.getDate(6);
+	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt("idcommentaire"));
+	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 chaqueCommentaire.setIdSite(resultat.getInt("idsite"));
+	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("contenucommentaire")));
+	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("ipcommentaire")));
+	        	 conversiondedate=resultat.getDate("datecommentaire");
 	        	 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
-	        	 chaqueCommentaire.setIdSecteur(resultat.getInt(7));
-	        	 chaqueCommentaire.setIdVoie(resultat.getInt(8));
+	        	 chaqueCommentaire.setIdSecteur(resultat.getInt("idsecteur"));
+	        	 chaqueCommentaire.setIdVoie(resultat.getInt("idvoie"));
 	        	 commentairesenvoye.add(chaqueCommentaire);
 	         }
         }catch(SQLException e) {
@@ -111,15 +111,15 @@ public class BddCommentairesDao implements CommentaireDao {
 	         resultat=statement.executeQuery("SELECT * FROM commentaires WHERE idsecteur="+idSecteur+"");
 	         while(resultat.next()) {
 	        	 Commentaire chaqueCommentaire =new Commentaire();
-	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt(1));
-	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt(2));
-	        	 chaqueCommentaire.setIdSite(resultat.getInt(3));
-	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString(5)));
-	        	 conversiondedate=resultat.getDate(6);
+	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt("idcommentaire"));
+	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 chaqueCommentaire.setIdSite(resultat.getInt("idsite"));
+	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("contenucommentaire")));
+	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("ipcommentaire")));
+	        	 conversiondedate=resultat.getDate("datecommentaire");
 	        	 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
-	        	 chaqueCommentaire.setIdSecteur(resultat.getInt(7));
-	        	 chaqueCommentaire.setIdVoie(resultat.getInt(8));
+	        	 chaqueCommentaire.setIdSecteur(resultat.getInt("idsecteur"));
+	        	 chaqueCommentaire.setIdVoie(resultat.getInt("idvoie"));
 	        	 commentairesenvoye.add(chaqueCommentaire);
 	         }
         }catch(SQLException e) {
@@ -153,15 +153,15 @@ public class BddCommentairesDao implements CommentaireDao {
 	         resultat=statement.executeQuery("SELECT * FROM commentaires WHERE idvoie="+idVoie+"");
 	         while(resultat.next()) {
 	        	 Commentaire chaqueCommentaire =new Commentaire();
-	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt(1));
-	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt(2));
-	        	 chaqueCommentaire.setIdSite(resultat.getInt(3));
-	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString(5)));
-	        	 conversiondedate=resultat.getDate(6);
+	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt("idcommentaire"));
+	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 chaqueCommentaire.setIdSite(resultat.getInt("idsite"));
+	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("contenucommentaire")));
+	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("ipcommentaire")));
+	        	 conversiondedate=resultat.getDate("datecommentaire");
 	        	 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
-	        	 chaqueCommentaire.setIdSecteur(resultat.getInt(7));
-	        	 chaqueCommentaire.setIdVoie(resultat.getInt(8));
+	        	 chaqueCommentaire.setIdSecteur(resultat.getInt("idsecteur"));
+	        	 chaqueCommentaire.setIdVoie(resultat.getInt("idvoie"));
 	        	 commentairesenvoye.add(chaqueCommentaire);
 	         }
         }catch(SQLException e) {

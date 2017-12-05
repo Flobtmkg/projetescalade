@@ -28,13 +28,13 @@ public class BddSitesDao implements SiteDao{
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM site WHERE idsite='"+idsite+"'");
 	         while(resultat.next()) {
-	        	 siteOutput.setIdSite(resultat.getInt(1));
-	        	 siteOutput.setNomSite(CodageGuillemets.getTexteDecode(resultat.getString(2)));
-	        	 siteOutput.setPaysSite(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 siteOutput.setVilleSite(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 siteOutput.setLatitudeSite(resultat.getDouble(5));
-	        	 siteOutput.setLongitudeSite(resultat.getDouble(6));
-	        	 siteOutput.setDescriptionSite(CodageGuillemets.getTexteDecode(resultat.getString(7)));
+	        	 siteOutput.setIdSite(resultat.getInt("idsite"));
+	        	 siteOutput.setNomSite(CodageGuillemets.getTexteDecode(resultat.getString("nomsite")));
+	        	 siteOutput.setPaysSite(CodageGuillemets.getTexteDecode(resultat.getString("payssite")));
+	        	 siteOutput.setVilleSite(CodageGuillemets.getTexteDecode(resultat.getString("villesite")));
+	        	 siteOutput.setLatitudeSite(resultat.getDouble("latitudesite"));
+	        	 siteOutput.setLongitudeSite(resultat.getDouble("longitudesite"));
+	        	 siteOutput.setDescriptionSite(CodageGuillemets.getTexteDecode(resultat.getString("descriptionsite")));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();
@@ -74,13 +74,13 @@ public class BddSitesDao implements SiteDao{
 	         resultat=statement.executeQuery("SELECT * FROM site WHERE "+clauseWhere);
 	         while(resultat.next()) {
 	        	 Site chaqueSite=new Site();
-	        	 chaqueSite.setIdSite(resultat.getInt(1));
-	        	 chaqueSite.setNomSite(CodageGuillemets.getTexteDecode(resultat.getString(2)));
-	        	 chaqueSite.setPaysSite(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 chaqueSite.setVilleSite(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 chaqueSite.setLatitudeSite(resultat.getDouble(5));
-	        	 chaqueSite.setLongitudeSite(resultat.getDouble(6));
-	        	 chaqueSite.setDescriptionSite(CodageGuillemets.getTexteDecode(resultat.getString(7)));
+	        	 chaqueSite.setIdSite(resultat.getInt("idsite"));
+	        	 chaqueSite.setNomSite(CodageGuillemets.getTexteDecode(resultat.getString("nomsite")));
+	        	 chaqueSite.setPaysSite(CodageGuillemets.getTexteDecode(resultat.getString("payssite")));
+	        	 chaqueSite.setVilleSite(CodageGuillemets.getTexteDecode(resultat.getString("villesite")));
+	        	 chaqueSite.setLatitudeSite(resultat.getDouble("latitudesite"));
+	        	 chaqueSite.setLongitudeSite(resultat.getDouble("longitudesite"));
+	        	 chaqueSite.setDescriptionSite(CodageGuillemets.getTexteDecode(resultat.getString("descriptionsite")));
 	        	 sitesOutput.add(chaqueSite);
 	         }
         }catch(SQLException e) {

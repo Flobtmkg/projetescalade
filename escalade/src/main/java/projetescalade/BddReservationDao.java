@@ -35,13 +35,13 @@ public class BddReservationDao implements ReservationDao {
 	         resultat=statement.executeQuery("SELECT * FROM reservation WHERE idutilisateur='"+idutilisateur+"'");
 	         while(resultat.next()) {
 	        	 Reservation chaqueReservation =new Reservation();
-	        	 chaqueReservation.setIdReservation(resultat.getInt(1));
-	        	 chaqueReservation.setIdUtilisateur(resultat.getInt(2));
-	        	 chaqueReservation.setIdTopo(resultat.getInt(3));
-	        	 conversiondedatedebut=resultat.getDate(4);
-	        	 conversiondedatefin=resultat.getDate(5);
-	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString(6)));
-	        	 chaqueReservation.setBilanReservation(resultat.getBoolean(7));
+	        	 chaqueReservation.setIdReservation(resultat.getInt("idreservation"));
+	        	 chaqueReservation.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 chaqueReservation.setIdTopo(resultat.getInt("idtopo"));
+	        	 conversiondedatedebut=resultat.getDate("datedebut");
+	        	 conversiondedatefin=resultat.getDate("datefin");
+	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
+	        	 chaqueReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
 	        	 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
 	        	 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
 	        	 reservationEffectuees.add(chaqueReservation);
@@ -75,13 +75,13 @@ public class BddReservationDao implements ReservationDao {
 	         resultat=statement.executeQuery("SELECT * FROM reservation WHERE idtopo='"+idtopo+"'");
 	         while(resultat.next()) {
 	        	 Reservation chaqueReservation =new Reservation();
-	        	 chaqueReservation.setIdReservation(resultat.getInt(1));
-	        	 chaqueReservation.setIdUtilisateur(resultat.getInt(2));
-	        	 chaqueReservation.setIdTopo(resultat.getInt(3));
-	        	 conversiondedatedebut=resultat.getDate(4);
-	        	 conversiondedatefin=resultat.getDate(5);
-	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString(6)));
-	        	 chaqueReservation.setBilanReservation(resultat.getBoolean(7));
+	        	 chaqueReservation.setIdReservation(resultat.getInt("idreservation"));
+	        	 chaqueReservation.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 chaqueReservation.setIdTopo(resultat.getInt("idtopo"));
+	        	 conversiondedatedebut=resultat.getDate("datedebut");
+	        	 conversiondedatefin=resultat.getDate("datefin");
+	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
+	        	 chaqueReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
 	        	 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
 	        	 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
 	        	 reservationEffectuees.add(chaqueReservation);
@@ -119,13 +119,13 @@ public class BddReservationDao implements ReservationDao {
 	         resultat=statement.executeQuery("SELECT * FROM reservation WHERE idtopo='"+idtopoInput+"' AND datefin >= '"+dateDuJour+"'::date");
 	         while(resultat.next()) {
 	        	 Reservation chaqueReservation =new Reservation();
-	        	 chaqueReservation.setIdReservation(resultat.getInt(1));
-	        	 chaqueReservation.setIdUtilisateur(resultat.getInt(2));
-	        	 chaqueReservation.setIdTopo(resultat.getInt(3));
-	        	 conversiondedatedebut=resultat.getDate(4);
-	        	 conversiondedatefin=resultat.getDate(5);
-	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString(6)));
-	        	 chaqueReservation.setBilanReservation(resultat.getBoolean(7));
+	        	 chaqueReservation.setIdReservation(resultat.getInt("idreservation"));
+	        	 chaqueReservation.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 chaqueReservation.setIdTopo(resultat.getInt("idtopo"));
+	        	 conversiondedatedebut=resultat.getDate("datedebut");
+	        	 conversiondedatefin=resultat.getDate("datefin");
+	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
+	        	 chaqueReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
 	        	 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
 	        	 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
 	        	 reservationEffectuees.add(chaqueReservation);
@@ -159,13 +159,13 @@ public class BddReservationDao implements ReservationDao {
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM reservation WHERE idtopo="+idtopo+" AND datefin<'"+aujourdhui.getTheDate().toString()+"'::date ORDER BY idreservation DESC LIMIT 1;");
 	         while(resultat.next()) {
-	        	 lastReservation.setIdReservation(resultat.getInt(1));
-	        	 lastReservation.setIdUtilisateur(resultat.getInt(2));
-	        	 lastReservation.setIdTopo(resultat.getInt(3));
-	        	 conversiondedatedebut=resultat.getDate(4);
-	        	 conversiondedatefin=resultat.getDate(5);
-	        	 lastReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString(6)));
-	        	 lastReservation.setBilanReservation(resultat.getBoolean(7));
+	        	 lastReservation.setIdReservation(resultat.getInt("idreservation"));
+	        	 lastReservation.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 lastReservation.setIdTopo(resultat.getInt("idtopo"));
+	        	 conversiondedatedebut=resultat.getDate("datedebut");
+	        	 conversiondedatefin=resultat.getDate("datefin");
+	        	 lastReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
+	        	 lastReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
 	        	 lastReservation.setDatedebutReservation(conversiondedatedebut.toString());
 	        	 lastReservation.setDatefinReservation(conversiondedatefin.toString());
 	         }
@@ -257,13 +257,13 @@ public class BddReservationDao implements ReservationDao {
 	         resultat=statement.executeQuery("SELECT * FROM reservation WHERE idtopo='"+idtopoInput+"' AND datefin >= '"+debut.toString()+"'::date");
 	         while(resultat.next()) {
 	        	 Reservation chaqueReservation =new Reservation();
-	        	 chaqueReservation.setIdReservation(resultat.getInt(1));
-	        	 chaqueReservation.setIdUtilisateur(resultat.getInt(2));
-	        	 chaqueReservation.setIdTopo(resultat.getInt(3));
-	        	 conversiondedatedebut=resultat.getDate(4);
-	        	 conversiondedatefin=resultat.getDate(5);
-	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString(6)));
-	        	 chaqueReservation.setBilanReservation(resultat.getBoolean(7));
+	        	 chaqueReservation.setIdReservation(resultat.getInt("idreservation"));
+	        	 chaqueReservation.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 chaqueReservation.setIdTopo(resultat.getInt("idtopo"));
+	        	 conversiondedatedebut=resultat.getDate("datedebut");
+	        	 conversiondedatefin=resultat.getDate("datefin");
+	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
+	        	 chaqueReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
 	        	 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
 	        	 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
 	        	 reservationEffectuees.add(chaqueReservation);

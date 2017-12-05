@@ -64,9 +64,9 @@ public class BddPhotoSiteDao implements PhotoSiteDao{
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM photosite WHERE idsite="+idSite+";");
 	         while(resultat.next()) {
-	        	 lienPhotoSite.setIdPhotoSite(resultat.getInt(1));
-	        	 lienPhotoSite.setIdSite(resultat.getInt(2));
-	        	 lienPhotoSite.setPathPhoto(CodageGuillemets.getTexteDecode(resultat.getString(3)));
+	        	 lienPhotoSite.setIdPhotoSite(resultat.getInt("idphoto"));
+	        	 lienPhotoSite.setIdSite(resultat.getInt("idsite"));
+	        	 lienPhotoSite.setPathPhoto(CodageGuillemets.getTexteDecode(resultat.getString("pathphoto")));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();

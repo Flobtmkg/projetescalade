@@ -32,11 +32,11 @@ public class BddSecteurDao implements SecteurDao{
 	         resultat=statement.executeQuery("SELECT * FROM secteur WHERE idsite="+idSiteInput+";");
 	         while(resultat.next()) {
 	        	 Secteur chaqueSecteur=new Secteur();
-	        	 chaqueSecteur.setIdSecteur(resultat.getInt(1));
-	        	 chaqueSecteur.setIdSite(resultat.getInt(2));
-	        	 chaqueSecteur.setNomSecteur(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 chaqueSecteur.setDescriptionSecteur(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 chaqueSecteur.setHauteurSecteur(resultat.getDouble(5));
+	        	 chaqueSecteur.setIdSecteur(resultat.getInt("idsecteur"));
+	        	 chaqueSecteur.setIdSite(resultat.getInt("idsite"));
+	        	 chaqueSecteur.setNomSecteur(CodageGuillemets.getTexteDecode(resultat.getString("nomsecteur")));
+	        	 chaqueSecteur.setDescriptionSecteur(CodageGuillemets.getTexteDecode(resultat.getString("descriptionsecteur")));
+	        	 chaqueSecteur.setHauteurSecteur(resultat.getDouble("hauteursecteur"));
 	        	 secteursDuSite.add(chaqueSecteur);
 	         }
         }catch(SQLException e) {
@@ -67,11 +67,11 @@ public class BddSecteurDao implements SecteurDao{
 	         resultat=statement.executeQuery("SELECT * FROM secteur;");
 	         while(resultat.next()) {
 	        	 Secteur chaqueSecteur=new Secteur();
-	        	 chaqueSecteur.setIdSecteur(resultat.getInt(1));
-	        	 chaqueSecteur.setIdSite(resultat.getInt(2));
-	        	 chaqueSecteur.setNomSecteur(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 chaqueSecteur.setDescriptionSecteur(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 chaqueSecteur.setHauteurSecteur(resultat.getDouble(5));
+	        	 chaqueSecteur.setIdSecteur(resultat.getInt("idsecteur"));
+	        	 chaqueSecteur.setIdSite(resultat.getInt("idsite"));
+	        	 chaqueSecteur.setNomSecteur(CodageGuillemets.getTexteDecode(resultat.getString("nomsecteur")));
+	        	 chaqueSecteur.setDescriptionSecteur(CodageGuillemets.getTexteDecode(resultat.getString("descriptionsecteur")));
+	        	 chaqueSecteur.setHauteurSecteur(resultat.getDouble("hauteursecteur"));
 	        	 secteurs.add(chaqueSecteur);
 	         }
         }catch(SQLException e) {
@@ -101,11 +101,11 @@ public class BddSecteurDao implements SecteurDao{
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM secteur WHERE idsecteur="+idSecteurInput+";");
 	         while(resultat.next()) {
-	        	 secteurTrouve.setIdSecteur(resultat.getInt(1));
-	        	 secteurTrouve.setIdSite(resultat.getInt(2));
-	        	 secteurTrouve.setNomSecteur(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 secteurTrouve.setDescriptionSecteur(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 secteurTrouve.setHauteurSecteur(resultat.getDouble(5));
+	        	 secteurTrouve.setIdSecteur(resultat.getInt("idsecteur"));
+	        	 secteurTrouve.setIdSite(resultat.getInt("idsite"));
+	        	 secteurTrouve.setNomSecteur(CodageGuillemets.getTexteDecode(resultat.getString("nomsecteur")));
+	        	 secteurTrouve.setDescriptionSecteur(CodageGuillemets.getTexteDecode(resultat.getString("descriptionsecteur")));
+	        	 secteurTrouve.setHauteurSecteur(resultat.getDouble("hauteursecteur"));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();

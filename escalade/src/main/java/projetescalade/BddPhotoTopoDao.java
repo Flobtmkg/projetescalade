@@ -63,9 +63,9 @@ public class BddPhotoTopoDao implements PhotoTopoDao{
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM phototopo WHERE idtopo="+idTopo+";");
 	         while(resultat.next()) {
-	        	 lienPhotoTopo.setIdPhotoTopo(resultat.getInt(1));
-	        	 lienPhotoTopo.setIdTopo(resultat.getInt(2));
-	        	 lienPhotoTopo.setPathPhoto(CodageGuillemets.getTexteDecode(resultat.getString(3)));
+	        	 lienPhotoTopo.setIdPhotoTopo(resultat.getInt("idphoto"));
+	        	 lienPhotoTopo.setIdTopo(resultat.getInt("idtopo"));
+	        	 lienPhotoTopo.setPathPhoto(CodageGuillemets.getTexteDecode(resultat.getString("pathphoto")));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();

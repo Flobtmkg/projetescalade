@@ -277,15 +277,15 @@ public class BddUtilisateurDao implements UtilisateurDao{
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM utilisateur WHERE idutilisateur='"+idutilisateurinput+"'");
 	         while(resultat.next()) {
-	        	 utilisateurOutput.setId(resultat.getInt(1));
-	        	 utilisateurOutput.setNom(CodageGuillemets.getTexteDecode(resultat.getString(2)));
-	        	 utilisateurOutput.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 utilisateurOutput.setEmail(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 conversiondedate=resultat.getDate(5);
-	        	 utilisateurOutput.setPays(CodageGuillemets.getTexteDecode(resultat.getString(6)));
-	        	 utilisateurOutput.setVille(CodageGuillemets.getTexteDecode(resultat.getString(7)));
-	        	 utilisateurOutput.setMotDePasse(resultat.getString(8));
-	        	 utilisateurOutput.setDescription(CodageGuillemets.getTexteDecode(resultat.getString(9)));
+	        	 utilisateurOutput.setId(resultat.getInt("idutilisateur"));
+	        	 utilisateurOutput.setNom(CodageGuillemets.getTexteDecode(resultat.getString("nomutilisateur")));
+	        	 utilisateurOutput.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString("prenomutilisateur")));
+	        	 utilisateurOutput.setEmail(CodageGuillemets.getTexteDecode(resultat.getString("emailutilisateur")));
+	        	 conversiondedate=resultat.getDate("datenaissanceutilisateur");
+	        	 utilisateurOutput.setPays(CodageGuillemets.getTexteDecode(resultat.getString("paysutilisateur")));
+	        	 utilisateurOutput.setVille(CodageGuillemets.getTexteDecode(resultat.getString("villeutilisateur")));
+	        	 utilisateurOutput.setMotDePasse(resultat.getString("mdputilisateur"));
+	        	 utilisateurOutput.setDescription(CodageGuillemets.getTexteDecode(resultat.getString("descriptionutilisateur")));
 	         }
 	       //Conversion de date
          	if(conversiondedate!=null) {
@@ -329,18 +329,18 @@ public class BddUtilisateurDao implements UtilisateurDao{
 	         resultat=statement.executeQuery("SELECT * FROM utilisateur WHERE "+clauseWhere+";");
 	         while(resultat.next()) {
 	        	 Utilisateur chaqueUtilisateur=new Utilisateur(0,"","","","","","","","");
-	        	 chaqueUtilisateur.setId(resultat.getInt(1));
-	        	 chaqueUtilisateur.setNom(CodageGuillemets.getTexteDecode(resultat.getString(2)));
-	        	 chaqueUtilisateur.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 chaqueUtilisateur.setEmail(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 conversiondedate=resultat.getDate(5);
+	        	 chaqueUtilisateur.setId(resultat.getInt("idutilisateur"));
+	        	 chaqueUtilisateur.setNom(CodageGuillemets.getTexteDecode(resultat.getString("nomutilisateur")));
+	        	 chaqueUtilisateur.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString("prenomutilisateur")));
+	        	 chaqueUtilisateur.setEmail(CodageGuillemets.getTexteDecode(resultat.getString("emailutilisateur")));
+	        	 conversiondedate=resultat.getDate("datenaissanceutilisateur");
 	        	 if(conversiondedate!=null) {
 	        		 chaqueUtilisateur.setDateNaissance(conversiondedate.toString());
 	        	 }
-	        	 chaqueUtilisateur.setPays(CodageGuillemets.getTexteDecode(resultat.getString(6)));
-	        	 chaqueUtilisateur.setVille(CodageGuillemets.getTexteDecode(resultat.getString(7)));
-	        	 chaqueUtilisateur.setMotDePasse(resultat.getString(8));
-	        	 chaqueUtilisateur.setDescription(CodageGuillemets.getTexteDecode(resultat.getString(9)));
+	        	 chaqueUtilisateur.setPays(CodageGuillemets.getTexteDecode(resultat.getString("paysutilisateur")));
+	        	 chaqueUtilisateur.setVille(CodageGuillemets.getTexteDecode(resultat.getString("villeutilisateur")));
+	        	 chaqueUtilisateur.setMotDePasse(resultat.getString("mdputilisateur"));
+	        	 chaqueUtilisateur.setDescription(CodageGuillemets.getTexteDecode(resultat.getString("descriptionutilisateur")));
 	        	 utilisateursOutput.add(chaqueUtilisateur);
 	         }
         }catch(SQLException e) {

@@ -30,7 +30,7 @@ public class BddTopoSitesDao implements TopoSitesDao {
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM toposites WHERE idtopo='"+idtopo+"'");
 	         while(resultat.next()) {
-	        	 idDesSites.add(resultat.getInt(3));
+	        	 idDesSites.add(resultat.getInt("idsite"));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();
@@ -59,7 +59,7 @@ public class BddTopoSitesDao implements TopoSitesDao {
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM toposites WHERE idsite='"+idsite+"'");
 	         while(resultat.next()) {
-	        	 idDesTopos.add(resultat.getInt(2));
+	        	 idDesTopos.add(resultat.getInt("idtopo"));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();
@@ -126,7 +126,7 @@ public class BddTopoSitesDao implements TopoSitesDao {
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM toposites WHERE idsite="+idSite+";");
 	         while(resultat.next()) {
-	        	 idDesTopos.add(resultat.getInt(2));
+	        	 idDesTopos.add(resultat.getInt("idtopo"));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();

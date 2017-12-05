@@ -55,13 +55,6 @@
   <servlet>
   	<description>
   	</description>
-  	<display-name>ServletRecherche</display-name>
-  	<servlet-name>ServletRecherche</servlet-name>
-  	<servlet-class>projetescalade.ServletRecherche</servlet-class>
-  </servlet>
-  <servlet>
-  	<description>
-  	</description>
   	<display-name>ServletEspaceUtilisateur</display-name>
   	<servlet-name>ServletEspaceUtilisateur</servlet-name>
   	<servlet-class>projetescalade.ServletEspaceUtilisateur</servlet-class>
@@ -158,22 +151,22 @@
   <servlet>
   	<description>
   	</description>
-  	<display-name>AjoutAdministrateur</display-name>
-  	<servlet-name>AjoutAdministrateur</servlet-name>
-  	<servlet-class>projetescalade.AjoutAdministrateur</servlet-class>
+  	<display-name>SuggestionsUtilisateurs</display-name>
+  	<servlet-name>SuggestionsUtilisateurs</servlet-name>
+  	<servlet-class>projetescalade.SuggestionsUtilisateurs</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ServletAjoutAdministrateur</display-name>
+  	<servlet-name>ServletAjoutAdministrateur</servlet-name>
+  	<servlet-class>projetescalade.ServletAjoutAdministrateur</servlet-class>
   	<multipart-config>
 	    <location></location>
 	    <max-file-size>10485760</max-file-size>
 	    <max-request-size>52428800</max-request-size>
 	    <file-size-threshold>1048576</file-size-threshold>
 	</multipart-config>
-  </servlet>
-  <servlet>
-  	<description>
-  	</description>
-  	<display-name>SuggestionsUtilisateurs</display-name>
-  	<servlet-name>SuggestionsUtilisateurs</servlet-name>
-  	<servlet-class>projetescalade.SuggestionsUtilisateurs</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Servlet1</servlet-name>
@@ -186,10 +179,6 @@
   <servlet-mapping>
   	<servlet-name>ServletTopo</servlet-name>
   	<url-pattern>/topo</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>ServletRecherche</servlet-name>
-  	<url-pattern>/recherche</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ServletEspaceUtilisateur</servlet-name>
@@ -240,12 +229,12 @@
   	<url-pattern>/voie</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>AjoutAdministrateur</servlet-name>
-  	<url-pattern>/ajoutadministrateur</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
   	<servlet-name>SuggestionsUtilisateurs</servlet-name>
   	<url-pattern>/suggestions</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletAjoutAdministrateur</servlet-name>
+  	<url-pattern>/ajoutadministrateur</url-pattern>
   </servlet-mapping>
   <jsp-config>
   	<jsp-property-group>

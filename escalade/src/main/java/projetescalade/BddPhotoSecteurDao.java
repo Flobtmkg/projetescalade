@@ -62,9 +62,9 @@ public class BddPhotoSecteurDao implements PhotoSecteurDao{
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM photosecteur WHERE idsecteur="+idSecteur+";");
 	         while(resultat.next()) {
-	        	 lienPhotoSecteur.setIdPhotoSecteur(resultat.getInt(1));
-	        	 lienPhotoSecteur.setIdSecteur(resultat.getInt(2));
-	        	 lienPhotoSecteur.setPathPhoto(CodageGuillemets.getTexteDecode(resultat.getString(3)));
+	        	 lienPhotoSecteur.setIdPhotoSecteur(resultat.getInt("idphoto"));
+	        	 lienPhotoSecteur.setIdSecteur(resultat.getInt("idsecteur"));
+	        	 lienPhotoSecteur.setPathPhoto(CodageGuillemets.getTexteDecode(resultat.getString("pathphoto")));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();

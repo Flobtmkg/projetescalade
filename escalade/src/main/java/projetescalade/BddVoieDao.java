@@ -34,12 +34,12 @@ public class BddVoieDao implements VoieDao{
 	         resultat=statement.executeQuery("SELECT * FROM voie WHERE idsecteur="+idSecteurInput+";");
 	         while(resultat.next()) {
 	        	 Voie chaqueVoie=new Voie();
-	        	 chaqueVoie.setIdVoie(resultat.getInt(1));
-	        	 chaqueVoie.setIdSecteur(resultat.getInt(2));
-	        	 chaqueVoie.setDescriptionVoie(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 chaqueVoie.setEquipementVoie(resultat.getBoolean(4));
-	        	 chaqueVoie.setQuotationVoie(CodageGuillemets.getTexteDecode(resultat.getString(5)));
-	        	 chaqueVoie.setNomVoie(CodageGuillemets.getTexteDecode(resultat.getString(6)));
+	        	 chaqueVoie.setIdVoie(resultat.getInt("idvoie"));
+	        	 chaqueVoie.setIdSecteur(resultat.getInt("idsecteur"));
+	        	 chaqueVoie.setDescriptionVoie(CodageGuillemets.getTexteDecode(resultat.getString("descriptionvoie")));
+	        	 chaqueVoie.setEquipementVoie(resultat.getBoolean("equipementvoie"));
+	        	 chaqueVoie.setQuotationVoie(CodageGuillemets.getTexteDecode(resultat.getString("quotationvoie")));
+	        	 chaqueVoie.setNomVoie(CodageGuillemets.getTexteDecode(resultat.getString("nomvoie")));
 	        	 voiesDuSecteur.add(chaqueVoie);
 	         }
         }catch(SQLException e) {
@@ -68,12 +68,12 @@ public class BddVoieDao implements VoieDao{
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM voie WHERE idvoie="+idVoie+";");
 	         while(resultat.next()) {
-	        	 voieTrouvee.setIdVoie(resultat.getInt(1));
-	        	 voieTrouvee.setIdSecteur(resultat.getInt(2));
-	        	 voieTrouvee.setDescriptionVoie(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 voieTrouvee.setEquipementVoie(resultat.getBoolean(4));
-	        	 voieTrouvee.setQuotationVoie(CodageGuillemets.getTexteDecode(resultat.getString(5)));
-	        	 voieTrouvee.setNomVoie(CodageGuillemets.getTexteDecode(resultat.getString(6)));
+	        	 voieTrouvee.setIdVoie(resultat.getInt("idvoie"));
+	        	 voieTrouvee.setIdSecteur(resultat.getInt("idsecteur"));
+	        	 voieTrouvee.setDescriptionVoie(CodageGuillemets.getTexteDecode(resultat.getString("descriptionvoie")));
+	        	 voieTrouvee.setEquipementVoie(resultat.getBoolean("equipementvoie"));
+	        	 voieTrouvee.setQuotationVoie(CodageGuillemets.getTexteDecode(resultat.getString("quotationvoie")));
+	        	 voieTrouvee.setNomVoie(CodageGuillemets.getTexteDecode(resultat.getString("nomvoie")));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();
@@ -112,21 +112,21 @@ public class BddVoieDao implements VoieDao{
 		     }
 	         while(resultat.next()) {
 	        	 Voie chaqueVoie=new Voie();
-	        	 chaqueVoie.setIdVoie(resultat.getInt(1));
-	        	 chaqueVoie.setIdSecteur(resultat.getInt(2));
-	        	 chaqueVoie.setDescriptionVoie(CodageGuillemets.getTexteDecode(resultat.getString(3)));
-	        	 chaqueVoie.setEquipementVoie(resultat.getBoolean(4));
-	        	 chaqueVoie.setQuotationVoie(CodageGuillemets.getTexteDecode(resultat.getString(5)));
-	        	 chaqueVoie.setNomVoie(CodageGuillemets.getTexteDecode(resultat.getString(6)));
-	        	 chaqueVoie.setIdSite(resultat.getInt(8));
-	        	 chaqueVoie.setNomSecteur(CodageGuillemets.getTexteDecode(resultat.getString(9)));
-	        	 chaqueVoie.setDescriptionSecteur(CodageGuillemets.getTexteDecode(resultat.getString(10)));
-	        	 chaqueVoie.setHauteurSecteur(resultat.getDouble(11));
-	        	 chaqueVoie.setNomSite(CodageGuillemets.getTexteDecode(resultat.getString(13)));
-	        	 chaqueVoie.setPaysSite(CodageGuillemets.getTexteDecode(resultat.getString(14)));
-	        	 chaqueVoie.setVilleSite(CodageGuillemets.getTexteDecode(resultat.getString(15)));
-	        	 chaqueVoie.setDescriptionSite(CodageGuillemets.getTexteDecode(resultat.getString(18)));
-	        	 String photo=CodageGuillemets.getTexteDecode(resultat.getString(21));
+	        	 chaqueVoie.setIdVoie(resultat.getInt("idvoie"));
+	        	 chaqueVoie.setIdSecteur(resultat.getInt("idsecteur"));
+	        	 chaqueVoie.setDescriptionVoie(CodageGuillemets.getTexteDecode(resultat.getString("descriptionvoie")));
+	        	 chaqueVoie.setEquipementVoie(resultat.getBoolean("equipementvoie"));
+	        	 chaqueVoie.setQuotationVoie(CodageGuillemets.getTexteDecode(resultat.getString("quotationvoie")));
+	        	 chaqueVoie.setNomVoie(CodageGuillemets.getTexteDecode(resultat.getString("nomvoie")));
+	        	 chaqueVoie.setIdSite(resultat.getInt("idsite"));
+	        	 chaqueVoie.setNomSecteur(CodageGuillemets.getTexteDecode(resultat.getString("nomsecteur")));
+	        	 chaqueVoie.setDescriptionSecteur(CodageGuillemets.getTexteDecode(resultat.getString("descriptionsecteur")));
+	        	 chaqueVoie.setHauteurSecteur(resultat.getDouble("hauteursecteur"));
+	        	 chaqueVoie.setNomSite(CodageGuillemets.getTexteDecode(resultat.getString("nomsite")));
+	        	 chaqueVoie.setPaysSite(CodageGuillemets.getTexteDecode(resultat.getString("payssite")));
+	        	 chaqueVoie.setVilleSite(CodageGuillemets.getTexteDecode(resultat.getString("villesite")));
+	        	 chaqueVoie.setDescriptionSite(CodageGuillemets.getTexteDecode(resultat.getString("descriptionsite")));
+	        	 String photo=CodageGuillemets.getTexteDecode(resultat.getString("pathphoto"));
 	        	 //traitement spé des données d'aperçus photo
 	        	 if(photo!=null && !photo.isEmpty()) {
 	        		 photo="/escalade/img/"+"preview"+photo;

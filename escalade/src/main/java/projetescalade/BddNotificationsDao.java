@@ -32,13 +32,13 @@ ConnexionDao connexionEnCours;
 	         resultat=statement.executeQuery("SELECT * FROM notifications WHERE idutilisateurdestinataire='"+idutilisateur+"'");
 	         while(resultat.next()) {
 	        	 Notification chaqueNotification =new Notification();
-	        	 chaqueNotification.setIdNotification(resultat.getInt(1));
-	        	 chaqueNotification.setIdUtilisateurDestinataire(resultat.getInt(2));
-	        	 chaqueNotification.setIdUtilisateurExpediteur(resultat.getInt(3));
-	        	 chaqueNotification.setTypeNotification(CodageGuillemets.getTexteDecode(resultat.getString(4)));
-	        	 chaqueNotification.setTraitementNotification(CodageGuillemets.getTexteDecode(resultat.getString(5)));
-	        	 chaqueNotification.setParametreNotification(CodageGuillemets.getTexteDecode(resultat.getString(6)));
-	        	 chaqueNotification.setIdTopo(resultat.getInt(7));
+	        	 chaqueNotification.setIdNotification(resultat.getInt("idnotification"));
+	        	 chaqueNotification.setIdUtilisateurDestinataire(resultat.getInt("idutilisateurdestinataire"));
+	        	 chaqueNotification.setIdUtilisateurExpediteur(resultat.getInt("idutilisateurexpediteur"));
+	        	 chaqueNotification.setTypeNotification(CodageGuillemets.getTexteDecode(resultat.getString("typedenotification")));
+	        	 chaqueNotification.setTraitementNotification(CodageGuillemets.getTexteDecode(resultat.getString("traitementnotification")));
+	        	 chaqueNotification.setParametreNotification(CodageGuillemets.getTexteDecode(resultat.getString("parametrenotification")));
+	        	 chaqueNotification.setIdTopo(resultat.getInt("idtopo"));
 	        	 notificationsUtilisateur.add(chaqueNotification);
 	         }
         }catch(SQLException e) {

@@ -64,9 +64,9 @@ public class BddPhotoVoieDao implements PhotoVoieDao{
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM photovoie WHERE idvoie="+idVoie+";");
 	         while(resultat.next()) {
-	        	 lienPhotoVoie.setIdPhotoVoie(resultat.getInt(1));
-	        	 lienPhotoVoie.setIdVoie(resultat.getInt(2));
-	        	 lienPhotoVoie.setPathPhoto(CodageGuillemets.getTexteDecode(resultat.getString(3)));
+	        	 lienPhotoVoie.setIdPhotoVoie(resultat.getInt("idphoto"));
+	        	 lienPhotoVoie.setIdVoie(resultat.getInt("idvoie"));
+	        	 lienPhotoVoie.setPathPhoto(CodageGuillemets.getTexteDecode(resultat.getString("pathphoto")));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();

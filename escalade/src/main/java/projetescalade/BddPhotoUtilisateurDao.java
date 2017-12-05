@@ -64,9 +64,9 @@ public class BddPhotoUtilisateurDao implements PhotoUtilisateurDao{
 	         statement=connexion.createStatement();
 	         resultat=statement.executeQuery("SELECT * FROM photoutilisateur WHERE idutilisateur="+idUtilisateur+";");
 	         while(resultat.next()) {
-	        	 lienPhotoUtilisateur.setIdPhotoUtilisateur(resultat.getInt(1));
-	        	 lienPhotoUtilisateur.setIdUtilisateur(resultat.getInt(2));
-	        	 lienPhotoUtilisateur.setPathPhoto(CodageGuillemets.getTexteDecode(resultat.getString(3)));
+	        	 lienPhotoUtilisateur.setIdPhotoUtilisateur(resultat.getInt("idphoto"));
+	        	 lienPhotoUtilisateur.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 lienPhotoUtilisateur.setPathPhoto(CodageGuillemets.getTexteDecode(resultat.getString("pathphoto")));
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();
