@@ -22,7 +22,6 @@ public class ServletUtilisateurPublic extends HttpServlet {
 	private TopoDao accesBddTopo;
 	private ReservationDao accesBddReservation;
 	private CommentaireDao accesBddCommentaire;
-	private SiteDao accesBddSite;
 	//
 	ConnexionDao maconnexion;
 	//
@@ -38,7 +37,6 @@ public class ServletUtilisateurPublic extends HttpServlet {
         this.accesBddTopo=maconnexion.getTopoDao();
         this.accesBddReservation=maconnexion.getReservationDao();
         this.accesBddCommentaire=maconnexion.getCommentaireDao();
-        this.accesBddSite=maconnexion.getSiteDao();
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -84,14 +82,8 @@ public class ServletUtilisateurPublic extends HttpServlet {
 				//
 				//Récupération des commentaires de réservation
 				ArrayList<Reservation> reservationsAAfficher=accesBddReservation.getReservationUtilisateur(utilisateurAAfficher.getId());
-				for(Reservation res:reservationsAAfficher) {
-					res.setTopoAssocié(accesBddTopo.trouverTopo(res.getIdTopo()));
-				}
 				//Récupération des commentaires de sites
 				ArrayList<Commentaire> commentairesAAfficher=accesBddCommentaire.trouverCommentairesParUtilisateur(utilisateurAAfficher.getId());
-				for(Commentaire comm:commentairesAAfficher) {
-					comm.setSiteCommentaire(accesBddSite.trouverSite(comm.getIdSite()));
-				}
 				//
 				request.setAttribute("commentairesfound", commentairesAAfficher);
 				request.setAttribute("reservationsfound", reservationsAAfficher);

@@ -11,6 +11,8 @@ import java.util.Date;
 
 
 import javabeans.Reservation;
+import javabeans.Topo;
+import javabeans.Utilisateur;
 
 public class BddReservationDao implements ReservationDao {
 	//
@@ -28,13 +30,16 @@ public class BddReservationDao implements ReservationDao {
         ResultSet resultat=null;
         Date conversiondedatedebut = new Date();
         Date conversiondedatefin = new Date();
+        Date conversiondedate = new Date();
         ArrayList<Reservation>reservationEffectuees=new ArrayList<Reservation>();
         try {
         	 connexion = connexionEnCours.getConnection();
 	         statement=connexion.createStatement();
-	         resultat=statement.executeQuery("SELECT * FROM reservation WHERE idutilisateur='"+idutilisateur+"'");
+	         resultat=statement.executeQuery("SELECT * FROM reservation FULL JOIN topo ON reservation.idtopo=topo.idtopo FULL JOIN utilisateur ON topo.idproprietaire=utilisateur.idutilisateur WHERE reservation.idutilisateur="+idutilisateur+";");
 	         while(resultat.next()) {
 	        	 Reservation chaqueReservation =new Reservation();
+	        	 Utilisateur proprietaireTopo =new Utilisateur(0,"","","","","","","","");
+	        	 Topo topoAssocieReservation =new Topo();
 	        	 chaqueReservation.setIdReservation(resultat.getInt("idreservation"));
 	        	 chaqueReservation.setIdUtilisateur(resultat.getInt("idutilisateur"));
 	        	 chaqueReservation.setIdTopo(resultat.getInt("idtopo"));
@@ -42,8 +47,33 @@ public class BddReservationDao implements ReservationDao {
 	        	 conversiondedatefin=resultat.getDate("datefin");
 	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
 	        	 chaqueReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
-	        	 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
-	        	 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
+	        	 if(conversiondedatedebut!=null) {
+	        		 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
+	        	 }
+	        	 if(conversiondedatefin!=null) {
+	        		 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
+	        	 }
+	        	 //
+	        	 proprietaireTopo.setId(resultat.getInt("idproprietaire"));
+	        	 proprietaireTopo.setNom(CodageGuillemets.getTexteDecode(resultat.getString("nomutilisateur")));
+	        	 proprietaireTopo.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString("prenomutilisateur")));
+	        	 proprietaireTopo.setEmail(CodageGuillemets.getTexteDecode(resultat.getString("emailutilisateur")));
+	        	 conversiondedate=resultat.getDate("datenaissanceutilisateur");
+	        	 if(conversiondedate!=null) {
+	        		 proprietaireTopo.setDateNaissance(conversiondedate.toString());
+	        	 }
+	        	 proprietaireTopo.setPays(CodageGuillemets.getTexteDecode(resultat.getString("paysutilisateur")));
+	        	 proprietaireTopo.setVille(CodageGuillemets.getTexteDecode(resultat.getString("villeutilisateur")));
+	        	 proprietaireTopo.setDescription(CodageGuillemets.getTexteDecode(resultat.getString("descriptionutilisateur")));
+	        	 //
+	        	 topoAssocieReservation.setIdTopo(resultat.getInt("idtopo"));
+	        	 topoAssocieReservation.setIdProprietaire(resultat.getInt("idproprietaire"));
+	        	 topoAssocieReservation.setNomTopo(CodageGuillemets.getTexteDecode(resultat.getString("nomtopo")));
+	        	 topoAssocieReservation.setDescriptionTopo(CodageGuillemets.getTexteDecode(resultat.getString("descriptiontopo")));
+	        	 //
+	        	 chaqueReservation.setProprietaireAssocié(proprietaireTopo);
+	        	 chaqueReservation.setTopoAssocié(topoAssocieReservation);
+	        	 //
 	        	 reservationEffectuees.add(chaqueReservation);
 	         }
         }catch(SQLException e) {
@@ -60,45 +90,6 @@ public class BddReservationDao implements ReservationDao {
 		return reservationEffectuees;
 	}
 	//
-	//
-	public ArrayList<Reservation> getReservationDuTopo(int idtopo) {
-		//
-		Connection connexion = null;
-        Statement statement = null;
-        ResultSet resultat=null;
-        Date conversiondedatedebut = new Date();
-        Date conversiondedatefin = new Date();
-        ArrayList<Reservation>reservationEffectuees=new ArrayList<Reservation>();
-        try {
-        	 connexion = connexionEnCours.getConnection();
-	         statement=connexion.createStatement();
-	         resultat=statement.executeQuery("SELECT * FROM reservation WHERE idtopo='"+idtopo+"'");
-	         while(resultat.next()) {
-	        	 Reservation chaqueReservation =new Reservation();
-	        	 chaqueReservation.setIdReservation(resultat.getInt("idreservation"));
-	        	 chaqueReservation.setIdUtilisateur(resultat.getInt("idutilisateur"));
-	        	 chaqueReservation.setIdTopo(resultat.getInt("idtopo"));
-	        	 conversiondedatedebut=resultat.getDate("datedebut");
-	        	 conversiondedatefin=resultat.getDate("datefin");
-	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
-	        	 chaqueReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
-	        	 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
-	        	 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
-	        	 reservationEffectuees.add(chaqueReservation);
-	         }
-        }catch(SQLException e) {
-        	e.printStackTrace();
-        }finally {
-        	try {
-				connexion.close();
-				statement.close();
-	        	resultat.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-        }
-		return reservationEffectuees;
-	}
 	//
 	//
 	public ArrayList<Reservation> getReservationDuTopoEnCoursEtFuture(int idtopoInput) {
@@ -126,8 +117,12 @@ public class BddReservationDao implements ReservationDao {
 	        	 conversiondedatefin=resultat.getDate("datefin");
 	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
 	        	 chaqueReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
-	        	 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
-	        	 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
+	        	 if(conversiondedatedebut!=null) {
+	        		 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
+	        	 }
+	        	 if(conversiondedatefin!=null) {
+	        		 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
+	        	 }
 	        	 reservationEffectuees.add(chaqueReservation);
 	         }
         }catch(SQLException e) {
@@ -166,8 +161,12 @@ public class BddReservationDao implements ReservationDao {
 	        	 conversiondedatefin=resultat.getDate("datefin");
 	        	 lastReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
 	        	 lastReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
-	        	 lastReservation.setDatedebutReservation(conversiondedatedebut.toString());
-	        	 lastReservation.setDatefinReservation(conversiondedatefin.toString());
+	        	 if(conversiondedatedebut!=null) {
+	        		 lastReservation.setDatedebutReservation(conversiondedatedebut.toString());
+	        	 }
+	        	 if(conversiondedatefin!=null) {
+	        		 lastReservation.setDatefinReservation(conversiondedatefin.toString());
+	        	 }
 	         }
         }catch(SQLException e) {
         	e.printStackTrace();
@@ -264,8 +263,12 @@ public class BddReservationDao implements ReservationDao {
 	        	 conversiondedatefin=resultat.getDate("datefin");
 	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
 	        	 chaqueReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
-	        	 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
-	        	 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
+	        	 if(conversiondedatedebut!=null) {
+	        		 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
+	        	 }
+	        	 if(conversiondedatefin!=null) {
+	        		 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
+	        	 }
 	        	 reservationEffectuees.add(chaqueReservation);
 	         }
         }catch(SQLException e) {
@@ -358,5 +361,67 @@ public class BddReservationDao implements ReservationDao {
 			}
 		}
 		return erreurEventuelle;
+		
+		//
+		//
+	}
+	public ArrayList<Reservation> getReservationDuTopo(int idtopo) {
+		//
+		Connection connexion = null;
+        Statement statement = null;
+        ResultSet resultat=null;
+        Date conversiondedatedebut = new Date();
+        Date conversiondedatefin = new Date();
+        Date conversiondedate = new Date();
+        ArrayList<Reservation>reservationEffectuees=new ArrayList<Reservation>();
+        try {
+        	 connexion = connexionEnCours.getConnection();
+	         statement=connexion.createStatement();
+	         resultat=statement.executeQuery("SELECT * FROM reservation FULL JOIN utilisateur ON reservation.idutilisateur=utilisateur.idutilisateur WHERE idtopo='"+idtopo+"'");
+	         while(resultat.next()) {
+	        	 Reservation chaqueReservation =new Reservation();
+	        	 Utilisateur utilisateurQuiReserveTopo= new Utilisateur(0,"","","","","","","","");
+	        	 
+	        	 chaqueReservation.setIdReservation(resultat.getInt("idreservation"));
+	        	 chaqueReservation.setIdUtilisateur(resultat.getInt("idutilisateur"));
+	        	 chaqueReservation.setIdTopo(resultat.getInt("idtopo"));
+	        	 conversiondedatedebut=resultat.getDate("datedebut");
+	        	 conversiondedatefin=resultat.getDate("datefin");
+	        	 chaqueReservation.setCommentaireReservation(CodageGuillemets.getTexteDecode(resultat.getString("commentairereservation")));
+	        	 chaqueReservation.setBilanReservation(resultat.getBoolean("bilanreservation"));
+	        	 if(conversiondedatedebut!=null) {
+	        		 chaqueReservation.setDatedebutReservation(conversiondedatedebut.toString());
+	        	 }
+	        	 if(conversiondedatefin!=null) {
+	        		 chaqueReservation.setDatefinReservation(conversiondedatefin.toString());
+	        	 }
+	        	 //
+	        	 utilisateurQuiReserveTopo.setId(resultat.getInt("idutilisateur"));
+	        	 utilisateurQuiReserveTopo.setNom(CodageGuillemets.getTexteDecode(resultat.getString("nomutilisateur")));
+	        	 utilisateurQuiReserveTopo.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString("prenomutilisateur")));
+	        	 utilisateurQuiReserveTopo.setEmail(CodageGuillemets.getTexteDecode(resultat.getString("emailutilisateur")));
+	        	 conversiondedate=resultat.getDate("datenaissanceutilisateur");
+	        	 if(conversiondedate!=null) {
+	        		 utilisateurQuiReserveTopo.setDateNaissance(conversiondedate.toString());
+	        	 }
+	        	 utilisateurQuiReserveTopo.setPays(CodageGuillemets.getTexteDecode(resultat.getString("paysutilisateur")));
+	        	 utilisateurQuiReserveTopo.setVille(CodageGuillemets.getTexteDecode(resultat.getString("villeutilisateur")));
+	        	 utilisateurQuiReserveTopo.setDescription(CodageGuillemets.getTexteDecode(resultat.getString("descriptionutilisateur")));
+	        	 //
+	        	 chaqueReservation.setUtilisateurQuiReserve(utilisateurQuiReserveTopo);;
+	        	 reservationEffectuees.add(chaqueReservation);
+	         }
+        }catch(SQLException e) {
+        	e.printStackTrace();
+        }finally {
+        	try {
+				connexion.close();
+				statement.close();
+	        	resultat.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+        }
+		return reservationEffectuees;
 	}
 }

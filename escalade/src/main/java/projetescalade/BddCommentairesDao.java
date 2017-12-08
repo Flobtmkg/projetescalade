@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javabeans.Commentaire;
+import javabeans.Site;
+import javabeans.Utilisateur;
 
 public class BddCommentairesDao implements CommentaireDao {
 	//
@@ -30,16 +32,30 @@ public class BddCommentairesDao implements CommentaireDao {
         try {
         	 connexion = connexionEnCours.getConnection();
 	         statement=connexion.createStatement();
-	         resultat=statement.executeQuery("SELECT * FROM commentaires WHERE idutilisateur="+idutilisateur+";");
+	         resultat=statement.executeQuery("SELECT * FROM commentaires FULL JOIN site ON commentaires.idsite=site.idsite WHERE idutilisateur="+idutilisateur+";");
 	         while(resultat.next()) {
 	        	 Commentaire chaqueCommentaire =new Commentaire();
+	        	 Site sitecommentaire=new Site();
 	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt("idcommentaire"));
 	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt("idutilisateur"));
 	        	 chaqueCommentaire.setIdSite(resultat.getInt("idsite"));
 	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("contenucommentaire")));
 	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("ipcommentaire")));
 	        	 conversiondedate=resultat.getDate("datecommentaire");
-	        	 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
+	        	 if(conversiondedate!=null) {
+	        		 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
+	        	 }
+	        	 //
+	        	 sitecommentaire.setIdSite(resultat.getInt("idsite"));
+	        	 sitecommentaire.setNomSite(CodageGuillemets.getTexteDecode(resultat.getString("nomsite")));
+	        	 sitecommentaire.setPaysSite(CodageGuillemets.getTexteDecode(resultat.getString("payssite")));
+	        	 sitecommentaire.setVilleSite(CodageGuillemets.getTexteDecode(resultat.getString("villesite")));
+	        	 sitecommentaire.setLatitudeSite(resultat.getDouble("latitudesite"));
+	        	 sitecommentaire.setLongitudeSite(resultat.getDouble("longitudesite"));
+	        	 sitecommentaire.setDescriptionSite(CodageGuillemets.getTexteDecode(resultat.getString("descriptionsite")));
+	        	 //
+	        	 chaqueCommentaire.setSiteCommentaire(sitecommentaire);
+	        	 //
 	        	 commentairesenvoye.add(chaqueCommentaire);
 	         }
         }catch(SQLException e) {
@@ -64,22 +80,41 @@ public class BddCommentairesDao implements CommentaireDao {
         Statement statement = null;
         ResultSet resultat=null;
         Date conversiondedate = new Date();
+        Date conversiondedate2=new Date();
         ArrayList<Commentaire>commentairesenvoye=new ArrayList<Commentaire>();
         try {
         	 connexion = connexionEnCours.getConnection();
 	         statement=connexion.createStatement();
-	         resultat=statement.executeQuery("SELECT * FROM commentaires WHERE idsite="+idSite+";");
+	         resultat=statement.executeQuery("SELECT * FROM commentaires FULL JOIN utilisateur ON commentaires.idutilisateur=utilisateur.idutilisateur WHERE idsite="+idSite+";");
 	         while(resultat.next()) {
 	        	 Commentaire chaqueCommentaire =new Commentaire();
+	        	 Utilisateur commentateur=new Utilisateur(0,"","","","","","","","");
 	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt("idcommentaire"));
 	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt("idutilisateur"));
 	        	 chaqueCommentaire.setIdSite(resultat.getInt("idsite"));
 	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("contenucommentaire")));
 	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("ipcommentaire")));
 	        	 conversiondedate=resultat.getDate("datecommentaire");
-	        	 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
+	        	 if(conversiondedate!=null) {
+	        		 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
+	        	 }
 	        	 chaqueCommentaire.setIdSecteur(resultat.getInt("idsecteur"));
 	        	 chaqueCommentaire.setIdVoie(resultat.getInt("idvoie"));
+	        	 //
+	        	 commentateur.setId(resultat.getInt("idutilisateur"));
+	        	 commentateur.setNom(CodageGuillemets.getTexteDecode(resultat.getString("nomutilisateur")));
+	        	 commentateur.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString("prenomutilisateur")));
+	        	 commentateur.setEmail(CodageGuillemets.getTexteDecode(resultat.getString("emailutilisateur")));
+	        	 conversiondedate2=resultat.getDate("datenaissanceutilisateur");
+	        	 if(conversiondedate2!=null) {
+	        		 commentateur.setDateNaissance(conversiondedate2.toString());
+	        	 }
+	        	 commentateur.setPays(CodageGuillemets.getTexteDecode(resultat.getString("paysutilisateur")));
+	        	 commentateur.setVille(CodageGuillemets.getTexteDecode(resultat.getString("villeutilisateur")));
+	        	 commentateur.setDescription(CodageGuillemets.getTexteDecode(resultat.getString("descriptionutilisateur")));
+	        	 //
+	        	 chaqueCommentaire.setCommentateur(commentateur);
+	        	 //
 	        	 commentairesenvoye.add(chaqueCommentaire);
 	         }
         }catch(SQLException e) {
@@ -104,22 +139,41 @@ public class BddCommentairesDao implements CommentaireDao {
         Statement statement = null;
         ResultSet resultat=null;
         Date conversiondedate = new Date();
+        Date conversiondedate2 = new Date();
         ArrayList<Commentaire>commentairesenvoye=new ArrayList<Commentaire>();
         try {
         	 connexion = connexionEnCours.getConnection();
 	         statement=connexion.createStatement();
-	         resultat=statement.executeQuery("SELECT * FROM commentaires WHERE idsecteur="+idSecteur+"");
+	         resultat=statement.executeQuery("SELECT * FROM commentaires FULL JOIN utilisateur ON commentaires.idutilisateur=utilisateur.idutilisateur WHERE idsecteur="+idSecteur+";");
 	         while(resultat.next()) {
 	        	 Commentaire chaqueCommentaire =new Commentaire();
+	        	 Utilisateur commentateur=new Utilisateur(0,"","","","","","","","");
 	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt("idcommentaire"));
 	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt("idutilisateur"));
 	        	 chaqueCommentaire.setIdSite(resultat.getInt("idsite"));
 	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("contenucommentaire")));
 	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("ipcommentaire")));
 	        	 conversiondedate=resultat.getDate("datecommentaire");
-	        	 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
+	        	 if(conversiondedate!=null) {
+	        		 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
+	        	 }
 	        	 chaqueCommentaire.setIdSecteur(resultat.getInt("idsecteur"));
 	        	 chaqueCommentaire.setIdVoie(resultat.getInt("idvoie"));
+	        	 //
+	        	 commentateur.setId(resultat.getInt("idutilisateur"));
+	        	 commentateur.setNom(CodageGuillemets.getTexteDecode(resultat.getString("nomutilisateur")));
+	        	 commentateur.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString("prenomutilisateur")));
+	        	 commentateur.setEmail(CodageGuillemets.getTexteDecode(resultat.getString("emailutilisateur")));
+	        	 conversiondedate2=resultat.getDate("datenaissanceutilisateur");
+	        	 if(conversiondedate2!=null) {
+	        		 commentateur.setDateNaissance(conversiondedate2.toString());
+	        	 }
+	        	 commentateur.setPays(CodageGuillemets.getTexteDecode(resultat.getString("paysutilisateur")));
+	        	 commentateur.setVille(CodageGuillemets.getTexteDecode(resultat.getString("villeutilisateur")));
+	        	 commentateur.setDescription(CodageGuillemets.getTexteDecode(resultat.getString("descriptionutilisateur")));
+	        	 //
+	        	 chaqueCommentaire.setCommentateur(commentateur);
+	        	 //
 	        	 commentairesenvoye.add(chaqueCommentaire);
 	         }
         }catch(SQLException e) {
@@ -146,22 +200,41 @@ public class BddCommentairesDao implements CommentaireDao {
         Statement statement = null;
         ResultSet resultat=null;
         Date conversiondedate = new Date();
+        Date conversiondedate2=new Date();
         ArrayList<Commentaire>commentairesenvoye=new ArrayList<Commentaire>();
         try {
         	 connexion = connexionEnCours.getConnection();
 	         statement=connexion.createStatement();
-	         resultat=statement.executeQuery("SELECT * FROM commentaires WHERE idvoie="+idVoie+"");
+	         resultat=statement.executeQuery("SELECT * FROM commentaires FULL JOIN utilisateur ON commentaires.idutilisateur=utilisateur.idutilisateur WHERE idvoie="+idVoie+";");
 	         while(resultat.next()) {
 	        	 Commentaire chaqueCommentaire =new Commentaire();
+	        	 Utilisateur commentateur=new Utilisateur(0,"","","","","","","","");
 	        	 chaqueCommentaire.setIdCommentaire(resultat.getInt("idcommentaire"));
 	        	 chaqueCommentaire.setIdUtilisateur(resultat.getInt("idutilisateur"));
 	        	 chaqueCommentaire.setIdSite(resultat.getInt("idsite"));
 	        	 chaqueCommentaire.setContenuCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("contenucommentaire")));
 	        	 chaqueCommentaire.setIpCommentaire(CodageGuillemets.getTexteDecode(resultat.getString("ipcommentaire")));
 	        	 conversiondedate=resultat.getDate("datecommentaire");
-	        	 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
+	        	 if(conversiondedate!=null) {
+	        		 chaqueCommentaire.setDateCommentaire(conversiondedate.toString());
+	        	 }
 	        	 chaqueCommentaire.setIdSecteur(resultat.getInt("idsecteur"));
 	        	 chaqueCommentaire.setIdVoie(resultat.getInt("idvoie"));
+	        	 //
+	        	 commentateur.setId(resultat.getInt("idutilisateur"));
+	        	 commentateur.setNom(CodageGuillemets.getTexteDecode(resultat.getString("nomutilisateur")));
+	        	 commentateur.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString("prenomutilisateur")));
+	        	 commentateur.setEmail(CodageGuillemets.getTexteDecode(resultat.getString("emailutilisateur")));
+	        	 conversiondedate2=resultat.getDate("datenaissanceutilisateur");
+	        	 if(conversiondedate2!=null) {
+	        		 commentateur.setDateNaissance(conversiondedate2.toString());
+	        	 }
+	        	 commentateur.setPays(CodageGuillemets.getTexteDecode(resultat.getString("paysutilisateur")));
+	        	 commentateur.setVille(CodageGuillemets.getTexteDecode(resultat.getString("villeutilisateur")));
+	        	 commentateur.setDescription(CodageGuillemets.getTexteDecode(resultat.getString("descriptionutilisateur")));
+	        	 //
+	        	 chaqueCommentaire.setCommentateur(commentateur);
+	        	 //
 	        	 commentairesenvoye.add(chaqueCommentaire);
 	         }
         }catch(SQLException e) {

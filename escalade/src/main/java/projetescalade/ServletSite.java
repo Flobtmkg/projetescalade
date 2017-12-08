@@ -103,8 +103,6 @@ public class ServletSite extends HttpServlet {
 				ArrayList<Commentaire> commentaireDuSite = accesBddCommentaire.trouverCommentairesParSite(id);
 				for(Commentaire comm:commentaireDuSite) {
 					if(comm.getContenuCommentaire()!=null && comm.getContenuCommentaire().equals("")==false) {
-							Utilisateur commentateur = accesBddUtilisateur.trouver(comm.getIdUtilisateur());
-							comm.setCommentateur(commentateur);
 						if(comm.getIdUtilisateur()==0) {
 							Utilisateur commentateur2= new Utilisateur(0,"","","","","","","","");
 							commentateur2.setPrenom("Anonyme");

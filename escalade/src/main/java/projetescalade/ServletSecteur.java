@@ -95,8 +95,6 @@ public class ServletSecteur extends HttpServlet {
 									comm.setContenuCommentaire(comm.getContenuCommentaire().substring(secteurAAfficher.getNomSecteur().length()+12));
 								}
 							}finally {
-								Utilisateur commentateur = accesBddUtilisateur.trouver(comm.getIdUtilisateur());
-								comm.setCommentateur(commentateur);
 								if(comm.getIdUtilisateur()==0) {
 									Utilisateur commentateur2= new Utilisateur(0,"","","","","","","","");
 									commentateur2.setPrenom("Anonyme");

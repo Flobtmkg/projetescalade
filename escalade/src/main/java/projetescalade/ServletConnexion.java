@@ -25,7 +25,6 @@ public class ServletConnexion extends HttpServlet {
 	private TopoDao accesBddTopo;
 	private ReservationDao accesBddReservation;
 	private CommentaireDao accesBddCommentaire;
-	private SiteDao accesBddSite;
 	private NotificationDao accesBddNotification;
 	//
 	private ConnexionDao maconnexion;
@@ -41,7 +40,6 @@ public class ServletConnexion extends HttpServlet {
         this.accesBddTopo = maconnexion.getTopoDao();
         this.accesBddReservation=maconnexion.getReservationDao();
         this.accesBddCommentaire=maconnexion.getCommentaireDao();
-        this.accesBddSite=maconnexion.getSiteDao();
         this.accesBddNotification=maconnexion.getNotificationDao();
     }
 
@@ -78,10 +76,10 @@ public class ServletConnexion extends HttpServlet {
 					for(Topo top:topoDelUtilisateur) {
 						DisponibiliteTopo dispotopo = new DisponibiliteTopo(maconnexion);
 						top.setDispoTopo(dispotopo.isDisponible(top.getIdTopo()));
-						//definir si c'est la fin d'une periode de réservation et envoyer une notification de bilan
+						//definir si c'est la fin d'une periode de réservation
 						if(top.isDispoTopo()) {
 							Reservation res = accesBddReservation.getLastReservationDuTopo(top.getIdTopo());
-							if(res.getIdReservation()!=0) {
+							if(res.getIdReservation()!=0) {//On envoi pour faire un bilan et détecter si c'est une fin de réservation ou si le topo est tout simplement disponible
 								BilanReservation bilan=new BilanReservation(maconnexion);
 								bilan.bilanDeFinDeReservation(res,nouvelutilisateur);
 							}
@@ -97,14 +95,15 @@ public class ServletConnexion extends HttpServlet {
 					ArrayList<Reservation> reservationsDelUtilisateur=accesBddReservation.getReservationUtilisateur(nouvelutilisateur.getId());
 					//
 					for(Reservation res :reservationsDelUtilisateur) {
-						Topo toporecherche=accesBddTopo.trouverTopo(res.getIdTopo());
-						Utilisateur proprietairerecherche=accesBddUtilisateur.trouver(toporecherche.getIdProprietaire());
-						res.setTopoAssocié(toporecherche);
-						res.setProprietaireAssocié(proprietairerecherche);
-						//definir si c'est la fin d'une periode de réservation et envoyer une notification de bilan
-						if(toporecherche.isDispoTopo()) {
-							BilanReservation bilan=new BilanReservation(maconnexion);
-							bilan.bilanDeFinDeReservation(res,proprietairerecherche);
+						DisponibiliteTopo dispotopo = new DisponibiliteTopo(maconnexion);
+						res.getTopoAssocié().setDispoTopo(dispotopo.isDisponible(res.getTopoAssocié().getIdTopo()));
+						//definir si c'est la fin d'une periode de réservation
+						if(res.getTopoAssocié().isDispoTopo()) {
+							Reservation derniereRes = accesBddReservation.getLastReservationDuTopo(res.getTopoAssocié().getIdTopo());
+							if(derniereRes.getIdReservation()!=0) {//On envoi pour faire un bilan et détecter si c'est une fin de réservation ou si le topo est tout simplement disponible
+								BilanReservation bilan=new BilanReservation(maconnexion);
+								bilan.bilanDeFinDeReservation(derniereRes,res.getProprietaireAssocié());
+							}
 							//
 						}
 					}
@@ -112,21 +111,14 @@ public class ServletConnexion extends HttpServlet {
 					reservationsDelUtilisateur.sort(null);
 					////Commentaires laissés par l'utilisateur avec le site correspondant
 					ArrayList<Commentaire> commentairesDelUtilisateur=accesBddCommentaire.trouverCommentairesParUtilisateur(nouvelutilisateur.getId());
-					//
-					for(Commentaire comm :commentairesDelUtilisateur) {
-						Site siterecherche=accesBddSite.trouverSite(comm.getIdSite());
-						comm.setSiteCommentaire(siterecherche);
-					}
 					//On organise les commentaires de manière à afficher le plus récent en 1er
 					commentairesDelUtilisateur.sort(null);
+					//
 					//Notification de l'utilisateur avec l'expéditeur associé
 					ArrayList<Notification> notificationDelUtilisateur=accesBddNotification.trouverNotificationsParUtilisateur(nouvelutilisateur.getId());
 					//
 					int nouvellesNotifications=0;
-					//
 					for(Notification notif :notificationDelUtilisateur) {
-						Utilisateur expediteur=accesBddUtilisateur.trouver(notif.getIdUtilisateurExpediteur());
-						notif.setUtilisateurExpediteur(expediteur);
 						if(notif.getTraitementNotification()==null||notif.getTraitementNotification().equals("")){
 							nouvellesNotifications++;
 						}

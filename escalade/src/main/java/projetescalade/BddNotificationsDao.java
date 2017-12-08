@@ -7,11 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.mindrot.jbcrypt.BCrypt;
 
 import javabeans.Notification;
 import javabeans.Topo;
+import javabeans.Utilisateur;
 
 public class BddNotificationsDao implements NotificationDao{
 ConnexionDao connexionEnCours;
@@ -26,12 +28,14 @@ ConnexionDao connexionEnCours;
         Statement statement = null;
         ResultSet resultat=null;
         ArrayList<Notification>notificationsUtilisateur=new ArrayList<Notification>();
+        Date conversionDate=new Date();
         try {
         	 connexion = connexionEnCours.getConnection();
 	         statement=connexion.createStatement();
-	         resultat=statement.executeQuery("SELECT * FROM notifications WHERE idutilisateurdestinataire='"+idutilisateur+"'");
+	         resultat=statement.executeQuery("SELECT * FROM notifications FULL JOIN utilisateur ON notifications.idutilisateurexpediteur=utilisateur.idutilisateur WHERE idutilisateurdestinataire="+idutilisateur+";");
 	         while(resultat.next()) {
 	        	 Notification chaqueNotification =new Notification();
+	        	 Utilisateur expediteur=new Utilisateur(0,"","","","","","","","");
 	        	 chaqueNotification.setIdNotification(resultat.getInt("idnotification"));
 	        	 chaqueNotification.setIdUtilisateurDestinataire(resultat.getInt("idutilisateurdestinataire"));
 	        	 chaqueNotification.setIdUtilisateurExpediteur(resultat.getInt("idutilisateurexpediteur"));
@@ -39,6 +43,21 @@ ConnexionDao connexionEnCours;
 	        	 chaqueNotification.setTraitementNotification(CodageGuillemets.getTexteDecode(resultat.getString("traitementnotification")));
 	        	 chaqueNotification.setParametreNotification(CodageGuillemets.getTexteDecode(resultat.getString("parametrenotification")));
 	        	 chaqueNotification.setIdTopo(resultat.getInt("idtopo"));
+	        	 //
+	        	 expediteur.setId(resultat.getInt("idutilisateur"));
+	        	 expediteur.setNom(CodageGuillemets.getTexteDecode(resultat.getString("nomutilisateur")));
+	        	 expediteur.setPrenom(CodageGuillemets.getTexteDecode(resultat.getString("prenomutilisateur")));
+	        	 expediteur.setEmail(CodageGuillemets.getTexteDecode(resultat.getString("emailutilisateur")));
+	        	 conversionDate=resultat.getDate("datenaissanceutilisateur");
+	        	 if(conversionDate!=null) {
+	        		 expediteur.setDateNaissance(conversionDate.toString());
+	        	 }
+	        	 expediteur.setPays(CodageGuillemets.getTexteDecode(resultat.getString("paysutilisateur")));
+	        	 expediteur.setVille(CodageGuillemets.getTexteDecode(resultat.getString("villeutilisateur")));
+	        	 expediteur.setDescription(CodageGuillemets.getTexteDecode(resultat.getString("descriptionutilisateur")));
+	        	 //
+	        	 chaqueNotification.setUtilisateurExpediteur(expediteur);
+	        	 //
 	        	 notificationsUtilisateur.add(chaqueNotification);
 	         }
         }catch(SQLException e) {

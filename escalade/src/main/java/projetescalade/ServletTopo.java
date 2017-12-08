@@ -92,13 +92,7 @@ public class ServletTopo extends HttpServlet {
 				//Récupération des commentaires de réservation de ce topo et des utilisateurs ayant commenté
 				ArrayList<Reservation> reservationsDuTopo =accesBddReservation.getReservationDuTopo(topoAAfficher.getIdTopo());
 				ArrayList<Reservation> listeNonDisponible= new ArrayList<Reservation>();
-				int i=0;
 				for(Reservation res:reservationsDuTopo) {
-					if(res.getCommentaireReservation()!=null && res.getCommentaireReservation().equals("")==false) {
-						Utilisateur commentateur = accesBddUtilisateur.trouver(res.getIdUtilisateur());
-						res.setUtilisateurQuiReserve(commentateur);
-						i++;
-					}
 					if(aujourdhui.getTheDate().isBefore(LocalDate.parse(res.getDatefinReservation()))||aujourdhui.getTheDate().isEqual(LocalDate.parse(res.getDatefinReservation()))) {
 						listeNonDisponible.add(res);
 					}
@@ -106,7 +100,7 @@ public class ServletTopo extends HttpServlet {
 				}
 				//Nombre de réservations
 				int nbrReservations=reservationsDuTopo.size();
-				if(i==0) {
+				if(nbrReservations==0) {
 					reservationsDuTopo=null;
 				}
 				//Disponibilité du topo

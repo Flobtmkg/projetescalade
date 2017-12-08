@@ -54,7 +54,7 @@
 					</div>
 					<br>
 					<div class="col-sm-6 col-xs-12">
-						<p>Utilisez ce formulaire pour nous contacter ou nous faire parvenir vos suggestions. <br> Vous pouvez notamment nous envoyer vos suggestions de sites, de secteurs, de voies à intégrer à la base de donnée de la plateforme. Cette opération ne peut être réalisée par les utilisateurs eux-mêmes, chaque site devant être vérifié afin de garantir à nos membres des conditions suffisantes de sécurité.</p>
+						<p id="textavertissement">Utilisez ce formulaire pour nous contacter ou nous faire parvenir vos suggestions. <br> Vous pouvez notamment nous envoyer vos suggestions de sites, de secteurs, de voies à intégrer à la base de donnée de la plateforme. Cette opération ne peut être réalisée par les utilisateurs eux-mêmes, chaque site devant être vérifié afin de garantir à nos membres des conditions suffisantes de sécurité.</p>
 					</div>
 						<div class="row">
 							<div class="form-group form-inline col-xs-12">

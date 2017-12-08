@@ -99,8 +99,6 @@ public class ServletVoie extends HttpServlet {
 											comm.setContenuCommentaire(comm.getContenuCommentaire().substring(voieAAfficher.getNomVoie().length()+9));
 										}
 									}finally {
-										Utilisateur commentateur = accesBddUtilisateur.trouver(comm.getIdUtilisateur());
-										comm.setCommentateur(commentateur);
 										if(comm.getIdUtilisateur()==0) {
 											Utilisateur commentateur2= new Utilisateur(0,"","","","","","","","");
 											commentateur2.setPrenom("Anonyme");

@@ -10,6 +10,7 @@ p{color:rgba(255, 255, 255, 1)}
 h2#validation{text-shadow:0px 2px 4px rgba(0, 0, 0, 0.2); color:rgba(0, 0, 0, 1); border-bottom:1px; border-bottom-color:rgba(0,0,0,0.1); border-bottom-style: solid}
 p#textvalidation{color:rgba(0, 0, 0, 1)}
 textarea#textDescription{resize: vertical;font-style: italic}
+p#textavertissement{font-style: italic}
 #lesInputs{width:100%}
 #adroite{float:right; padding-right:0}
 #pasPadding{padding-right:0}
