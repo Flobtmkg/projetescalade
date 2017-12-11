@@ -16,7 +16,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/jqueryscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 	 <!-- système de scrollbar -->
-	<title>Parcourir les sites</title>
+	<title>Parcourir les topos</title>
 </head>
 <body>
 	<%@ include file="menu.jsp" %>

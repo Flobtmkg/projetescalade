@@ -11,7 +11,7 @@
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/menu.css" rel="stylesheet">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/menuutilisateur.js"></script>
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/suggestions.css" rel="stylesheet">
-<title>Inscription</title>
+<title>Suggestions et contact</title>
 </head>
 <body>
 	<%@ include file="menu.jsp" %>
