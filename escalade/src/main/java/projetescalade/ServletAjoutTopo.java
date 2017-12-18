@@ -75,6 +75,7 @@ public class ServletAjoutTopo extends HttpServlet {
 		}
 		//on récupère le topo précédent dans une requète pour obtenir idTopo correspondant
 		Topo topoRecupere=accesBddTopo.trouverTopoSansIdTopo(newTopo.getIdProprietaire(),newTopo.getNomTopo(),newTopo.getDescriptionTopo());
+		topoRecupere.setDispoTopo(true);
 		//On def les liens topoSites
 		ArrayList<LienTopoSite> sitesAssocies =new ArrayList<LienTopoSite>();
 		//On récupère le dernier indice idSite dans allSites

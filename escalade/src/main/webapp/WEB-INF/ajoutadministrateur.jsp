@@ -61,10 +61,10 @@
 							<input type="text" class="form-control" placeholder="Pays*" name="paysSite" pattern="{1,50}$" required>
 							<label class="col-xs-12 paspadding">Ville du site*</label>
 							<input type="text" class="form-control" placeholder="Ville*" name="villeSite" pattern="{1,50}$" required>
-							<label class="col-xs-12 paspadding">Latitude* (format décimal)</label>
-							<input type="text" class="form-control" placeholder="ex: 48.862725*" name="latitudeSite" pattern="-?\d{1,2}\.\d{1,6}" required>
-							<label class="col-xs-12 paspadding">Longitude* (format décimal)</label>
-							<input type="text" class="form-control" placeholder="ex: 2.287592*" name="longitudeSite"  pattern="-?\d{1,3}\.\d{1,6}" required>
+							<label class="col-xs-12 paspadding">Latitude* (format décimal, séparateur " . ", précision décimale max: 8 chiffres)</label>
+							<input type="text" class="form-control" placeholder="ex: 48.862725*" name="latitudeSite" pattern="-?\d{1,2}\.\d{1,8}" required>
+							<label class="col-xs-12 paspadding">Longitude* (format décimal, séparateur " . ", précision décimale max: 8 chiffres)</label>
+							<input type="text" class="form-control" placeholder="ex: 2.287592*" name="longitudeSite"  pattern="-?\d{1,3}\.\d{1,8}" required>
 							<label class="col-xs-12 paspadding">Description du site*</label>
 							<textarea rows="4" id="textDescription" class="form-control col-xs-12" placeholder="Décrivez le site ici*" name="descriptionSite" required></textarea>
 							<div id="buttonsupp2" class="col-xs-12">
@@ -105,7 +105,7 @@
 							</div>
 							<label class="col-xs-12 paspadding">Nom du Secteur*</label>
 							<input type="text" class="form-control" placeholder="Nom de secteur*" name="nomSecteur" pattern="{1,50}$" required>
-							<label class="col-xs-12 paspadding">Hauteur du secteur en mètres*</label>
+							<label class="col-xs-12 paspadding">Hauteur du secteur en mètres* (précision décimale min: 1 chiffre, max: 2 chiffres)</label>
 							<input type="text" class="form-control" placeholder="ex 20.5*" name="hauteurSecteur" pattern="-?\d{1,3}\.\d{1,2}" required>
 							<label class="col-xs-12 paspadding">Description du secteur*</label>
 							<textarea rows="4" id="textDescription" class="form-control col-xs-12" placeholder="Décrivez le secteur ici*" name="descriptionSecteur" required></textarea>
@@ -209,7 +209,7 @@
 							<div class="form-inline">
 								<div id="lesSelect" class="input-group col-sm-3">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-stats"></i></span>
-										<select id="lesSelect" name="cotationVoie5" class="form-control" required>
+										<select id="lesSelect" name="cotationVoie5" class="form-control">
 											<option></option>
 											<c:forEach var = "i" begin = "1" end = "9">
 													<option>${i}A</option>

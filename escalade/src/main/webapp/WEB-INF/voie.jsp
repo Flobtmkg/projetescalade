@@ -27,10 +27,10 @@
 	    </header>
 	    <form action="voie" method="post">
 	    	<div class="input-group col-xs-12">
-	    		<c:if test="${!empty sessionScope.utilisateurencours}">
+	    		<c:if test="${!empty sessionScope.utilisateurencours && sessionScope.utilisateurencours.id!=0}">
 	    			<h5 id="infossurblanc2">Vous commentez en tant que ${sessionScope.utilisateurencours.prenom} ${sessionScope.utilisateurencours.nom}.</h5>
 	    		</c:if>
-	    		<c:if test="${empty sessionScope.utilisateurencours}">
+	    		<c:if test="${empty sessionScope.utilisateurencours.id || sessionScope.utilisateurencours.id==0}">
 	    			<h5 id="infoimportante2">Vous commentez en tant qu'annonyme.</h5>
 	    		</c:if>
 	    	</div>

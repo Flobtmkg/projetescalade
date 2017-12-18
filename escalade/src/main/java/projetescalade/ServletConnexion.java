@@ -56,6 +56,8 @@ public class ServletConnexion extends HttpServlet {
 		//courtcircuiter la procédure si idadmin+mdpadmin
 		if(request.getParameter("email").equals(getServletContext().getInitParameter("idadmin")) && request.getParameter("motDePasse").equals(getServletContext().getInitParameter("mdpadmin"))) {
 			HttpSession session= request.getSession();
+			Utilisateur utilisateurVide=new Utilisateur(0,"","","","","","","","");
+			session.setAttribute("utilisateurencours", utilisateurVide);
 			session.setAttribute("Admin","true");
 			response.sendRedirect(request.getContextPath() + "/ajoutadministrateur");
 	   }else {
