@@ -2,7 +2,7 @@ package javabeans;
 
 import java.time.LocalDate;
 
-import projetescalade.CalculDate;
+import classestravail.CalculDate;
 
 public class Reservation implements Comparable<Reservation>{
 private int idReservation;

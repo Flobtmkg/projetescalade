@@ -1,6 +1,6 @@
 package javabeans;
 
-import projetescalade.CalculDate;
+import classestravail.CalculDate;
 
 public class Commentaire implements Comparable<Commentaire>{
 private int idCommentaire;

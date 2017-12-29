@@ -36,28 +36,28 @@
   <servlet>
   	<display-name>Servlet1</display-name>
   	<servlet-name>Servlet1</servlet-name>
-  	<servlet-class>projetescalade.Servlet1</servlet-class>
+  	<servlet-class>servlets.Servlet1</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletSites</display-name>
   	<servlet-name>ServletSites</servlet-name>
-  	<servlet-class>projetescalade.ServletSites</servlet-class>
+  	<servlet-class>servlets.ServletSites</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletTopo</display-name>
   	<servlet-name>ServletTopo</servlet-name>
-  	<servlet-class>projetescalade.ServletTopo</servlet-class>
+  	<servlet-class>servlets.ServletTopo</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletEspaceUtilisateur</display-name>
   	<servlet-name>ServletEspaceUtilisateur</servlet-name>
-  	<servlet-class>projetescalade.ServletEspaceUtilisateur</servlet-class>
+  	<servlet-class>servlets.ServletEspaceUtilisateur</servlet-class>
   	<multipart-config>
 	    <location></location>
 	    <max-file-size>10485760</max-file-size>
@@ -70,49 +70,49 @@
   	</description>
   	<display-name>ServletDeconnexion</display-name>
   	<servlet-name>ServletDeconnexion</servlet-name>
-  	<servlet-class>projetescalade.ServletDeconnexion</servlet-class>
+  	<servlet-class>servlets.ServletDeconnexion</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletInscription</display-name>
   	<servlet-name>ServletInscription</servlet-name>
-  	<servlet-class>projetescalade.ServletInscription</servlet-class>
+  	<servlet-class>servlets.ServletInscription</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletConnexion</display-name>
   	<servlet-name>ServletConnexion</servlet-name>
-  	<servlet-class>projetescalade.ServletConnexion</servlet-class>
+  	<servlet-class>servlets.ServletConnexion</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletUtilisateurPublic</display-name>
   	<servlet-name>ServletUtilisateurPublic</servlet-name>
-  	<servlet-class>projetescalade.ServletUtilisateurPublic</servlet-class>
+  	<servlet-class>servlets.ServletUtilisateurPublic</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletRechercheTopo</display-name>
   	<servlet-name>ServletRechercheTopo</servlet-name>
-  	<servlet-class>projetescalade.ServletRechercheTopo</servlet-class>
+  	<servlet-class>servlets.ServletRechercheTopo</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletReservations</display-name>
   	<servlet-name>ServletReservations</servlet-name>
-  	<servlet-class>projetescalade.ServletReservations</servlet-class>
+  	<servlet-class>servlets.ServletReservations</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletAjoutTopo</display-name>
   	<servlet-name>ServletAjoutTopo</servlet-name>
-  	<servlet-class>projetescalade.ServletAjoutTopo</servlet-class>
+  	<servlet-class>servlets.ServletAjoutTopo</servlet-class>
   	<multipart-config>
 	    <location></location>
 	    <max-file-size>10485760</max-file-size>
@@ -125,42 +125,42 @@
   	</description>
   	<display-name>ServletSite</display-name>
   	<servlet-name>ServletSite</servlet-name>
-  	<servlet-class>projetescalade.ServletSite</servlet-class>
+  	<servlet-class>servlets.ServletSite</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletAjoutImageUtilisateur</display-name>
   	<servlet-name>ServletAjoutImageUtilisateur</servlet-name>
-  	<servlet-class>projetescalade.ServletAjoutImageUtilisateur</servlet-class>
+  	<servlet-class>servlets.ServletAjoutImageUtilisateur</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletSecteur</display-name>
   	<servlet-name>ServletSecteur</servlet-name>
-  	<servlet-class>projetescalade.ServletSecteur</servlet-class>
+  	<servlet-class>servlets.ServletSecteur</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletVoie</display-name>
   	<servlet-name>ServletVoie</servlet-name>
-  	<servlet-class>projetescalade.ServletVoie</servlet-class>
+  	<servlet-class>servlets.ServletVoie</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
-  	<display-name>SuggestionsUtilisateurs</display-name>
-  	<servlet-name>SuggestionsUtilisateurs</servlet-name>
-  	<servlet-class>projetescalade.SuggestionsUtilisateurs</servlet-class>
+  	<display-name>ServletSuggestionsUtilisateurs</display-name>
+  	<servlet-name>ServletSuggestionsUtilisateurs</servlet-name>
+  	<servlet-class>servlets.ServletSuggestionsUtilisateurs</servlet-class>
   </servlet>
   <servlet>
   	<description>
   	</description>
   	<display-name>ServletAjoutAdministrateur</display-name>
   	<servlet-name>ServletAjoutAdministrateur</servlet-name>
-  	<servlet-class>projetescalade.ServletAjoutAdministrateur</servlet-class>
+  	<servlet-class>servlets.ServletAjoutAdministrateur</servlet-class>
   	<multipart-config>
 	    <location></location>
 	    <max-file-size>10485760</max-file-size>
@@ -229,7 +229,7 @@
   	<url-pattern>/voie</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>SuggestionsUtilisateurs</servlet-name>
+  	<servlet-name>ServletSuggestionsUtilisateurs</servlet-name>
   	<url-pattern>/suggestions</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
